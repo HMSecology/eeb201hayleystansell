@@ -37,5 +37,12 @@ geometricgrowthfun <- function(N0, RR, ttMax){
 
 #Testing above function's functionality
 
-geometricgrowthfun(N0=55, RR=-0.5, ttMax=30)
-plot(1:(ttMax+1), NN, xlab="time", ylab="N", type="b", col='green')
+NN<-geometricgrowthfun(N0=55, RR=0.5, ttMax=30)
+plot(1:(30+1), NN, xlab="time", ylab="N", type="b", col='green')
+#?????getting the same basic geometric curve no matter the RR value????
+#first issue - needed to call an actual result from the function - here, it's "NN", NN is the RESULT of the function(x,y,z)
+#second issue - despite entering a ttMax of 30 in the parentheses of geometricgrowthfun, it was only located in the function. 
+# -the ttMax that is listed as the Max of the x-axis is SOMEHOWWWWWW??? not connected with the ttMax that is located in the function's parentheses
+# -do not understand why this connection does not exist
+
+ttMax
