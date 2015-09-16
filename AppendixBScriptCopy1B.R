@@ -31,3 +31,17 @@ M[,]
 #
 #SKIP SIMPLE MATRIX ALGEBRA
 #
+#B.3.5 DATA FRAMES
+#
+#A data frame is somewhere between a spreadsheet and a matrix. Column number matches row number (IS THIS REQUIRED?), BUT it's not expected that all data types with in the frame will be of the same class (e.g. you can mix numbers and logical info.)
+dat<- data.frame(species= c("S.altissima", "S.rugosa", "E.graminifolia", "A.pilosus"), treatment= factor(c("Control", "Water", "Control", "Water")), height = c(1.1,0.8,0.9,1), width=c(1,1.7,0.6,0.2))
+dat
+dat[2,]
+dat[3,4]
+#to return specific data or a subset, specify the location just as you do in a matrix
+dat[,2]=="Water"
+dat[dat[,2]=="Water",]
+#NOTE THE LAST COMMA AFTER WATER, which returns all species treated with water. Without it, you get the treatment and width columns!!
+subset(dat,treatment=="Water")
+#^MUCH MUCH SIMPLER FORMATTING TO DO THE SAME THING
+
