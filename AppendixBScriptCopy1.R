@@ -24,4 +24,30 @@ RSiteSearch("violin", restrict = c("functions"))
 #restricts or filters results to show fuctions with the term 'violin'
 help(RSiteSearch)
 #self explanatory
-#B.2 ASSIGNMENT
+#
+#B.2 ASSIGNMENT (is a pound sign needed to create empty lines or what...)
+#
+a<-2+3
+a
+# "a" is now 5
+b<-a+a
+b
+# "b" is 10
+a+a;a+b
+# ^a semicolon can let you command multiple actions in one line of code/script
+#
+#B.3 DATA STRUCTURES
+#
+#B.3.1 VECTORS
+#
+Y<- c(8.3, 8.6, 10.7, 10.8, 11, 11, 11.1, 11.2, 11.3, 11.4)
+Y
+Y= c(8.3, 8.6, 10.7, 10.8, 11, 11, 11.1, 11.2, 11.3, 11.4)
+Y
+#for a VECTOR, you can assign info to the vector name using EITHER <- or = 
+a= 2+4
+a
+#this works to get 5 as a result for "a", so...
+b= a+a
+b
+#this also works, so WHEN is it importan to distinguish <- and = ????
