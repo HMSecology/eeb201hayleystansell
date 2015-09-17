@@ -119,3 +119,36 @@ plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
 NN<-discretelogisticfunTEST(N0=10, ttMax=25, rr=variousR)
 plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
 #same as before, no errors but no new plot showing
+
+#Editing function again
+
+discretelogisticfunTEST<- function(N0, ttMax=25, rr){
+  NN<-matrix(NA, nrow=1, ncol=ttMax+1)
+  NN[1]<-N0
+  variousR
+  par<-(mfrow=c(2,3))
+  for (rr in variousR){
+    NN[variousR]<-NN[rr]*
+    (1+(rr*(1-(NN[tt]/KK))))
+  }
+  return(NN)
+}
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
+#????? the function should stay all the same, but I need to tell it that I want it to use a different rr each time. I want it to index by time to get it to plot at each time point?
+#but also want to tell it to make multiple plots using each r
+
+discretelogisticfunTEST<- function(N0, ttMax=25, rr=variousR){
+  NN<-matrix(NA, nrow=1, ncol=ttMax+1)
+  NN[1]<-N0
+  variousR
+  par<-(mfrow=c(2,3))
+  for (tt in 1:ttMax && rr in variousR()){
+    NN[tt+1]<-NN[tt]*
+      (1+(rr*(1-(NN[tt]/KK))))
+  }
+  return(NN)
+}
+
+#?????still lost on this. information online about how to request two conditions in a for statement not useful
+
+
