@@ -40,8 +40,42 @@ for (tt in 1:ttMax){
 }
 
 #Need to define everything, including rr
+#be VERY careful with parentheses/brackets, that they match in number and type
+#the only thing you are indexing here/putting brackets is "tt"-time. that's because time is the input that is changing, and being the source of each output
+#^right?
+
 
 plot(1:(50+1), NN, xlab="time", ylab="N", type="b", col='blue')
+#again with putting a real number in for time, vs. ttMax+1
+#something about it being inside or outside of the function - WHY??
+
+
+#
+#converting script to a function
+#
+
+discretelogisticfun<- function(N0, ttMax, rr){
+  NN<-matrix(NA, nrow=1, ncol=ttMax+1)
+  NN[1]<-N0
+  for (tt in 1:ttMax){
+    NN[tt+1]<-NN[tt]*
+      (1+(rr*(1-(NN[tt]/KK))))
+  }
+  return(NN)
+}
+
+#testing functionality
+#REMEMBER that you have to "pull" the return/result out from the function. Like, answer<-function(thisScript,theseparameters)
+#here, NN is your answer/return
+#so,
+
+NN<-discretelogisticfun(N0=15, ttMax=25, rr=0.1)
+#add in how to plot:
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='green')
+
+#SUCCESS!
+
+#TIP: be VERY CAREFUL with matching values, variables, parameters, etc.
 
 
 
