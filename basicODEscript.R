@@ -37,7 +37,7 @@ plot(expGrowthOutput[,1], expGrowthOutput[,2],col="blue", type="l")
 
 init<-5
 tseq<-seq(0,20, by =0.01)
-pars<- c(rr=0.5)
+pars<- c(rr=0.05)
 pars['rr']
 
 expGrowthOutput<-lsoda(init, tseq, expGrowthODE, pars)
@@ -47,7 +47,7 @@ expGrowthOutput<-lsoda(init, tseq, expGrowthODE, pars)
 head(expGrowthOutput)
 
 
-plot(expGrowthOutput[,1], expGrowthOutput[,2],col="red", type="l")
+plot(expGrowthOutput[,1], expGrowthOutput[,2],col="green", type="l")
 #the "type" is an L, not a 1
 
 
