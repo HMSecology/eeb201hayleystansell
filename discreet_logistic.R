@@ -69,7 +69,7 @@ discretelogisticfun<- function(N0, ttMax, rr){
 #here, NN is your answer/return
 #so,
 
-NN<-discretelogisticfun(N0=15, ttMax=25, rr=0.1)
+NN<-discretelogisticfun(N0=15, ttMax=25, rr=0.8)
 #add in how to plot:
 plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='green')
 
@@ -78,4 +78,44 @@ plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='green')
 #TIP: be VERY CAREFUL with matching values, variables, parameters, etc.
 
 
+###########################
+#3.3.2 MINI EXERCISE
+variousR<-c(-0.3, 0.3, 1.3, 1.9, 2.2, 2.7)
+variousR
+rr<-variousR
+par<-(mfrow=c(2,3))
+NN<-discretelogisticfun(N0=10, ttMax=25, rr=variousR)
+#DID I NEED TO ADD KK as a defineable variable?
+#otherwise you get KK as an "unused argument" - I happened to set KK=100 right away in creating the function
 
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='red')
+
+
+warnings()
+#TONS OF WARNINGS saying the number of items to replace is not a multiple of replacement length
+#thinking I need to redefine my function, will edit below:
+
+#converting script to a function
+#
+
+discretelogisticfunTEST<- function(N0, ttMax, rr=variousR){
+  NN<-matrix(NA, nrow=1, ncol=ttMax+1)
+  NN[1]<-N0
+  variousR
+  par<-(mfrow=c(2,3))
+  for (tt in 1:ttMax){
+    NN[tt+1]<-NN[tt]*
+      (1+(rr*(1-(NN[tt]/KK))))
+  }
+  return(NN)
+}
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
+#did not work, probably because I haven't used the actual new function (which works on its own, or at least has no errors)
+
+NN<-discretelogisticfunTEST(N0=10, ttMax=25)
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
+#still no errors, but no iterations with various RR
+
+NN<-discretelogisticfunTEST(N0=10, ttMax=25, rr=variousR)
+plot(1:(25+1), NN, xlab="time", ylab="NN", type ="b", col='blue')
+#same as before, no errors but no new plot showing
