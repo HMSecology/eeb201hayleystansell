@@ -37,16 +37,24 @@ head(continuousLogisticOutput)
 ICVector<-seq(0,200,by=10)
 
 ########################everything works fine above here#######################
+kk<-100
 
 plot(x=NULL, y=NULL, xlim=c(1,max(tseq)), ylim=c(0, (2*kk)), xlab="time", ylab="N", main="Logistic growth")
 #inserting new plot code IN PLACE OF prior code
 #fixed mismatch of parentheses
+#ERROR: object "kk" not found
+#add apostrophes around kk - produces ERROR IN 2*"kk" - non-numeric argument to binary operator
+#add kk<-100 above plot. produces empty plot with full labels (have not tried to run with for(ii...) argument)
+
+
 
 for(ii in 1:length(ICVector)){
   init<-ICVector[ii]
   logisticOutput<-lsoda(init, tseq, continuousLogistic, pars)
   lines(continuousLogisticOutput[,1], continuousLogisticOutput[,2], col="blue", type="l")
 }
+
+#######################currently produces a plot!!!####################SUCCESS?????######################################
 
 #the "type" is an L, not a 1
 
