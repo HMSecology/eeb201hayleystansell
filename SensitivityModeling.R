@@ -1,7 +1,9 @@
-#Writing a logistic growth model in continuous time
+#Looking at sensitivity of various models
 
 library(deSolve)
+#Sensitivity to initial conditions
 
+#Example
 continuousLogistic<-function(tt,yy,pars){
   derivs<-pars['rr']*(1-(yy/pars['kk']))
   return(list(derivs))
@@ -29,4 +31,4 @@ head(continuousLogisticOutput)
 plot(continuousLogisticOutput[,1], continuousLogisticOutput[,2],col="red", type="l")
 #the "type" is an L, not a 1
 
-####SUCCESS!!!!##########
+
