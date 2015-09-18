@@ -4,6 +4,8 @@ library(deSolve)
 #Sensitivity to initial conditions
 
 #Example
+#copy/pasting continuous logistic model as base
+
 continuousLogistic<-function(tt,yy,pars){
   derivs<-pars['rr']*(1-(yy/pars['kk']))
   return(list(derivs))
@@ -28,7 +30,26 @@ head(continuousLogisticOutput)
 #[5,]  0.4 1.788841
 #[6,]  0.5 1.985067
 
-plot(continuousLogisticOutput[,1], continuousLogisticOutput[,2],col="red", type="l")
+#########################everything works fine above here######################
+
+#assuming all new code is just added in, and that the for loop regarding the ICVector is related to how the data are displayed
+
+ICVector<-seq(0,200,by=10)
+
+########################everything works fine above here#######################
+
+plot(x=NULL, y=NULL, xlim=c(1,max(tseq)), ylim=c(0, (2*kk)), xlab="time", ylab="N", main="Logistic growth")
+#inserting new plot code IN PLACE OF prior code
+#fixed mismatch of parentheses
+
+for(ii in 1:length(ICVector)){
+  init<-ICVector[ii]
+  logisticOutput<-lsoda(init, tseq, continuousLogistic, pars)
+  lines(continuousLogisticOutput[,1], continuousLogisticOutput[,2], col="blue", type="l")
+}
+
 #the "type" is an L, not a 1
+
+#"make plots for a few values of r"
 
 
