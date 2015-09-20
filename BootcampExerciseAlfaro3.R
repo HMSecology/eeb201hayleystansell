@@ -41,4 +41,49 @@ for(ii in 1:length(years)){
 
 #Exercise Number 5 ###########################################################
 
-#
+bankAccounts<- c(10, 9.2, 5.6, 3.7, 8.8, 0.5) #had to remove the space between "bankAccounts" and "<-"
+
+compounded<-rep(NA,6)
+
+
+interestRate <- 0.0125;
+for (i in 1:length(bankAccounts)) {
+  compounded[i] <- interestRate*bankAccounts[i] + bankAccounts[i]; }
+
+compounded
+# [1] 10.12500  9.31500  5.67000  3.74625  8.91000  0.50625
+
+#can also just define "compounded" not as rep(NA,6), but as the equation compounded<- interestRate*bankAccounts + bankAccounts
+#can ALSO define compounded as c(1:6), which effectively creates a vector of 6 "blanks", or tells it 6 iterations
+#btw, a vector that is a string of values can also be considered a matrix of one row. A vector can also be a multi-row matrix...
+#therefore, you can also tell R that "compounded<-matrix[1:6]
+
+
+#Exercise Number 6 ########################################################
+
+interestRate<-0.0525
+bankAccounts<- c(10, 9.2, 5.6) 
+house<- c(4.8, 3.8, 5.7) #deduct
+food<- c(3.5, 4.3, 5.0)    #deduct
+fun<- c(7.8, 2.1, 10.5)  #deduct
+expenses<-house+food+fun
+#can probably write expenses as a function where you are adding via indexing?
+
+# incomes (through TAships) of 
+income <- c(21, 21, 21) #add this
+
+for (j in 1:5) {
+  for (i in 1:length(bankAccounts)){
+    bankAccounts[i] <- bankAccounts[i]+income[i]-expenses[i]
+    bankAccounts[i]<-  bankAccounts[i]*interestRate+bankAccounts[i]
+  }
+}
+bankAccounts
+    #step 1 modify bankAccounts so that amounts reflect income and expenses
+    #step 2 get calculate interest and add to accounts from step 1
+    #you can actually use the line you have already written if you
+    #modify amounts in bankAccounts directly in step 1
+
+
+
+
