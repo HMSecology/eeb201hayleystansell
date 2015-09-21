@@ -146,4 +146,21 @@ total
 
 #Exercise Number 9 ###########################################################
 
+#"small" if less than or equal to -1, "medium" if between -1 and 1, and "big" if equal to or greater than 1
+
+for (ii in -5:5){
+  if (ii<=-1){
+    cat(ii, "is small\n")
+  }
+  else if (ii<1 && ii>-1){
+    cat(ii, "is medium\n")
+  }
+  else if (ii>=1){
+    cat(ii, "is big\n")
+  }
+}
+
+#success!!! - the " ____\n" asks each entry to be put on a new line vs. just one continuous string, I think. 
+#Also had to be careful with spacing. If on one line, would need a space and/or punctuation to separate each entry well
+
 
