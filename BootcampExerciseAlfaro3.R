@@ -1,4 +1,31 @@
-#Exercise Number 3 on "Bootcamp Exercises" sheet from day 1 ###################
+#Exercise Number 1 on "Bootcamp Exercises" sheet from day 1 #############################
+
+#write a for loop that runs from 1:9 so that it prints WHAT APPEARS TO BE one asterisk at the bottom. Just one...
+
+for(ii in 1:9){
+  if (ii<9){
+    cat(ii, " \n")
+  }
+  else{
+    cat(ii, " *\n")
+  }
+}
+
+#Success!!!!
+
+
+
+
+
+#Exercise Number 2 from "Bootcamp Exercises" from day 1 #################################
+
+#
+
+
+
+
+
+#Exercise Number 3 on "Bootcamp Exercises" sheet from day 1 #############################
 
 #"by hand, figure out the initial values of these variables and values at the start and end of each iteration of the loop
 
