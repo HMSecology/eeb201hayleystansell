@@ -19,7 +19,19 @@ for(ii in 1:9){
 
 #Exercise Number 2 from "Bootcamp Exercises" from day 1 #################################
 
-#
+#Modify the above loop so that it DOES NOT break lines (so no \n) with 10 asterisks, each separated by one ampersand
+
+for(ii in 1:10){
+  if (ii<=10){
+    cat(ii, "*&")
+  }
+}
+??\n
+help("\n")
+#cannot find information about what \n is supposed to do, other than cause a line break, which I figured out via trial/error
+#showing numbers in between, which did not happen with the series in exercise 1...
+help.start()
+#cannot find anything on Help search either..
 
 
 
