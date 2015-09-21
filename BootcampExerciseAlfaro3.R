@@ -119,3 +119,31 @@ for (time in 2015:2020){
 }
 
 bankAccounts
+
+
+
+
+#Exercise Number 8 ###########################################################
+#153 should be the final value
+xx<-seq(1:17)
+
+#trying without the sequence. This does not work because it is looking for any time xx is less than 17. 
+#The highest xx value you get is 32 because it loops up until there is xx<-16+16, yielding a new xx of 32, which breaks the loop
+xx<-0
+total<-0
+while(xx<17){
+ xx<-xx+1
+ total<-total+xx
+ print(xx) 
+}
+
+total
+#needed two variables (xx and total). XX was set to zero so that the output of the first loop would be 1 (vs xx<-1+1, <-2).
+#total is used to tell R to work with the totals and not just add xx's together. You want to add a given xx value to an existing total.
+
+
+
+
+#Exercise Number 9 ###########################################################
+
+
