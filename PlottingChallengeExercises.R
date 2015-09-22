@@ -53,11 +53,9 @@ compute_chisquare_2=function(x){
 }
 
 
-
-
 # Apply the compute_chi_square function to each snp
-chisqs=apply(snps,1,compute_chisquare)
-chisqs2=apply(snps,1,compute_chisquare_2)
+chisqs<-apply(snps,1,compute_chisquare)
+chisqs2<-apply(snps,1,compute_chisquare_2)
 
 #check to see that the chisquare statistcs are the same:
 #first do this by computing Pearson's correlation coefficient:
@@ -68,6 +66,38 @@ plot(chisqs,chisqs2)
 
 
 #####SUCCESS! Got basic plot
+
+#add in a vector for P-values, using pchisq() function
+#don't completely understand this
+?pchisq
+
+pvals<-pchisq(chisqs,1,lower.tail=FALSE)
+head(pvals)
+###############################################
+
+#Exercises Part B#
+
+#what proportion of p-values (aka vector pvals) are <0.05, <0.01, <0.001?
+#Count the number of pvals smaller than the significance threshold
+
+# code below taken from earlier class notes. Not positive what the "mean" means, 
+#other than assuming it's giving you the arith. mean p-value for all the ones that are below that significance threshold.
+signifthres<-0.05
+sum(pvals<signifthres) 
+mean(pvals<signifthres) 
+#Here, sum is 181 (181 p-values below that threshold)
+
+signifthres<-0.01
+sum(pvals<signifthres)
+#Here, sum is 41
+
+signifthres<-0.001
+sum(pvals<signifthres)
+#Here, sum is 5
+
+
+
+
 
 
 
