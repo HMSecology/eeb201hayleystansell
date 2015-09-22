@@ -95,10 +95,44 @@ signifthres<-0.001
 sum(pvals<signifthres)
 #Here, sum is 5
 
+################################################
 
+#Exercise 1 Part C#
 
+#find out how many SNPs were tested for departures from HW-equilib. How many p-vals do you have? Try using length function.
+#Save variable as a value called "num_pval"
 
+?length()
+length(pvals)
+#4014 p-values
+#not sure about syntax
+#num_pval<-function(length(pvals)) -----nope
+num_pval<-c(length(pvals))
+num_pval
+#success!!!
 
+###############################################
+
+#Exercise 1 Part D#
+
+#you have num_pval total p-values (4014). #if HWequilib is occuring/true, the smallest p-value is expected to be 1/num_pval
+#second smallest expected to be 2/num_pval
+#third smallest expected to be 3/num_pval
+#etc. 
+#LARGEST p-value is expected to be num_pval/num_pval - aka "1". 
+#calc/make a vector for expected p-values and name it "exp_pvals"
+
+for (ii in 1:length(pvals)){
+  if (ii<=4013){
+    exp_pvals<-ii/pvals
+  
+  else if (ii<-4014)
+    exp_pvals<-pvals/pvals
+  }
+}
+exp_pvals
+
+#successfully got some sort of output, but it's showing what looks like a bunch of ID's and values of 1. 
 
 
 
