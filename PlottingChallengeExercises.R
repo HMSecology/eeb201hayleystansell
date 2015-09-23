@@ -294,14 +294,20 @@ dev.off()
 #Store these genotypes in the vector "case_genotypes".
 head(snpsDataFrame)
 
-case_genotypes<-snpsDataFrame["rs7584086_T",(cases[,1])]
+case_genotypes<-snps["rs7584086_T",(cases)]
+head(case_genotypes)
 #this gives "error in cases[,1]: incorrect number of dimensions
 
-case_genotypes<-snps["rs7584086_T",]
-case_genotypes
-#?????????????????????????
+#????????????????????????? -------------Okay got it
 
+##############################################
 
+#Exercise 2 part F#
+
+control_genotypes<-snps["rs7584086_T", (controls)]
+head(control_genotypes)
+
+#looks good. For E and F, had to change name of matrix to the name I assigned it ("snps[]")
 
 
 
