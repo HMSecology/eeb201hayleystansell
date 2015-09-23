@@ -165,6 +165,40 @@ sort_pvals<-sort(pvals, decreasing=FALSE)
 sort_pvals
 #THESE pvalues all are under 1, increasing to exactly one. 
 
+###############################################
+
+#Exercise 1 part F#
+
+??"-log10"
+??"sort_log"
+??"sort"
+??"sort&&log"
+??"log10"
+
+log_sort_pvals<- -(log10(sort_pvals))
+head(log_sort_pvals)
+log_exp_pvals<- -(log10(exp_pvals))
+head(log_exp_pvals)
+
+###############################################
+
+#Exercise 1 part G#
+
+??"QQplot"
+#Internet tells me that a QQplot is effectively just showing deviance (or lackthereof) of sample values from expected values
+#suggests theoretical values on the x, sample values on the y
+?plot
+
+plot(x=log_sort_pvals, y=log_exp_pvals, xlab="Actual P-values", ylab= "Expected P-values")
+dev.off()
+#no plot is showing with this one
+#changing <- 's  to = 's  ---- THIS WORKED
+#plot shows that data sits along a diagonal very well until the upper ends of the p-values
+#added "Main" title, plot dissappeared.
+#now getting no plot with "null device = 1" --- this happenes everytime I run "dev.off()" ....so, not running it for the moment
+
+
+##############################################
 
 
 ###############################################
