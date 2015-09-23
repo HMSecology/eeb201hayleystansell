@@ -122,17 +122,48 @@ num_pval
 #LARGEST p-value is expected to be num_pval/num_pval - aka "1". 
 #calc/make a vector for expected p-values and name it "exp_pvals"
 
-for (ii in 1:length(pvals)){
-  if (ii<=4013){
-    exp_pvals<-ii/pvals
-  
-  else if (ii<-4014)
-    exp_pvals<-pvals/pvals
-  }
-}
-exp_pvals
+#exp_pvals<-(1:length(pvals))/pvals
+#exp_pvals
+#^tried after trying code below. generates what look more like real numbers, not sure if any approach one.
+?max()
+#max(exp_pvals, na.rm=TRUE)
+#outputs a GIANT number as the maximum......not good.
 
+#exp_pvals<-(1:length(num_pval))/num_pval
+#exp_pvals
+#still getting huge numbers
+
+#exp_pvals<-(1:num_pval)/num_pval
+#exp_pvals
+#still huge.....?
+
+#for (ii in 1:length(pvals)){
+#  if (ii<=4013){
+#   exp_pvals<-ii/pvals
+#  
+#  else if (ii<-4014)
+#    exp_pvals<-pvals/pvals
+#  }
+#}
+#exp_pvals
 #successfully got some sort of output, but it's showing what looks like a bunch of ID's and values of 1. 
+
+#exp_pvals<-(1:length(pvals))/pvals
+
+#moving on for the sake of continuing
+
+###############################################
+
+#Exercise 1 Part E#
+
+exp_pvals<-(1:num_pval)/num_pval
+exp_pvals
+#bumping this down
+
+?sort()
+sort_pvals<-sort(pvals, decreasing=FALSE)
+sort_pvals
+#THESE pvalues all are under 1, increasing to exactly one. 
 
 
 
