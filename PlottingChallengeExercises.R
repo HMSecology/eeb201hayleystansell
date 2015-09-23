@@ -200,7 +200,7 @@ dev.off()
 
 ##############################################
 
-#Exercise 1 part H#
+#Exercise 1 part H - I#
 
 #add diagonal line with slope of 1
 abline(0, 1)
@@ -208,7 +208,61 @@ abline(0, 1)
 
 ###############################################
 
-#Exercise 1 part G#
+###################################################################################
+
+#Exercise 2 part A#
+
+getwd()
+
+# Load a data set
+phenoDataFrame=read.table('Day2dataset2PHENO.txt',header=TRUE)
+#okay
+
+dim(phenoDataFrame)
+
+zz<-as.matrix(phenoDataFrame)
+head(zz)
+
+###############################################
+
+#Exercise 2 part B#
+
+#need to use quantile
+#Find the value of the phenotype such that 25% of the individuals have a phenotype LESS than this value.
+quantile(zz, 0.25)
+#gives return of ~4.995
+#Extract the row numbers(or individual IDs, whichever you prefer) of the individuals fulfilling
+#this criterion. Store the row numbers for these individuals in vector called "controls." 
+#need to extract individual ID's for ppl with mmolperL < 4.995119
+controls<-c(quantile(zz,0.25))
+?c()
+?which()
+controls<-which(zz[,2]<quantile(zz, 0.25))
+controls
+#success!
+
+###############################################
+
+#Exercise 2 part C#
+
+#using another quantile
+#Find the value of the phenotype such that 25% of the individuals have a phenotype GREATER than this value (looking for 0.75 quantile)
+quantile(zz, 0.75)
+#returns 30.25 as 75th percentile point
+
+#Extract the row numbers (or individual IDs, whichever you prefer) of the individuals fulfilling this criterion. 
+#Store the row numbers for these individuals in a vector called "cases"
+#cases<-which(zz[,2]>quantile(zz, 0.75))
+#cases
+#getting "integer (0)" as return....
+?integer()
+
+#try switching direction ---same error--- UNTIL COMMENTED OUT THE GREATER-THAN CODE FOR CASES
+cases<-which(zz[,2]<quantile(zz, 0.75))
+cases
+
+
+
 
 
 
