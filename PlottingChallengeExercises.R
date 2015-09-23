@@ -262,8 +262,11 @@ quantile(zz, 0.75)
 #cases
 #commenting out for now
 
-cases<-which(zz[,2]>quantile(zz, 0.75))
+cases<-which(zz[,2]>quantile(zz[,2], 0.75))
 cases
+#had to specify in both which AND quantile that I want to look at values in column 2 only
+#SUCCESS!
+
 
 dim(zz)
 #looks like I'm getting integer(0) because when I look at what's below the 75%, it shows ALL OF THE ID's. 
@@ -297,6 +300,14 @@ case_genotypes<-snpsDataFrame["rs7584086_T",(cases[,1])]
 case_genotypes<-snps["rs7584086_T",]
 case_genotypes
 #?????????????????????????
+
+
+
+
+
+
+
+
 
 
 ###############################################
