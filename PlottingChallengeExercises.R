@@ -258,12 +258,30 @@ quantile(zz, 0.75)
 ?integer()
 
 #try switching direction ---same error--- UNTIL COMMENTED OUT THE GREATER-THAN CODE FOR CASES
-cases<-which(zz[,2]<quantile(zz, 0.75))
+#cases<-which(zz[,2]<quantile(zz, 0.75))
+#cases
+#commenting out for now
+
+cases<-which(zz[,2]>quantile(zz, 0.75))
 cases
 
+dim(zz)
+#looks like I'm getting integer(0) because when I look at what's below the 75%, it shows ALL OF THE ID's. 
 
+###############################################
 
+#Exercise 2 part D#
 
+#Make a density plot of the distribution of phenotypes (i.e. the blood glucose levels). 
+#Add vertical lines to the plot to denote the 25% and 75% tails of the distribution.
+
+plot(density(zz),col=2,lwd=4,xlab="Glucose Levels",xlim=c(-1,80),main="Glucose Level Distribution")
+
+abline(v=quantile(zz,0.25),lty=2,lwd=3,col="green") 
+abline(v=quantile(zz,0.75),lty=2,lwd=3,col="blue") 
+
+dev.off()
+#Interesting plot....not helping to explain the lack of apparent values above the 75% mark...
 
 
 ###############################################
