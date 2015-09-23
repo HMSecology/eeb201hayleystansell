@@ -283,6 +283,21 @@ abline(v=quantile(zz,0.75),lty=2,lwd=3,col="blue")
 dev.off()
 #Interesting plot....not helping to explain the lack of apparent values above the 75% mark...
 
+###############################################
+
+#Exercise 2 part E#
+
+#Extract the case genotypes from the "snpsDataFrame" for SNP "rs7584086_T". 
+#Store these genotypes in the vector "case_genotypes".
+head(snpsDataFrame)
+
+case_genotypes<-snpsDataFrame["rs7584086_T",(cases[,1])]
+#this gives "error in cases[,1]: incorrect number of dimensions
+
+case_genotypes<-snps["rs7584086_T",]
+case_genotypes
+#?????????????????????????
+
 
 ###############################################
 
