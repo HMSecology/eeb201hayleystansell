@@ -200,6 +200,17 @@ dev.off()
 
 ##############################################
 
+#Exercise 1 part H#
+
+#add diagonal line with slope of 1
+abline(0, 1)
+#create a line with slope of 1 and intercept of zero
+
+###############################################
+
+#Exercise 1 part G#
+
+
 
 ###############################################
 
