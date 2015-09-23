@@ -296,6 +296,7 @@ head(snpsDataFrame)
 
 case_genotypes<-snps["rs7584086_T",(cases)]
 head(case_genotypes)
+length(case_genotypes) #15 entries
 #this gives "error in cases[,1]: incorrect number of dimensions
 
 #????????????????????????? -------------Okay got it
@@ -308,6 +309,24 @@ control_genotypes<-snps["rs7584086_T", (controls)]
 head(control_genotypes)
 
 #looks good. For E and F, had to change name of matrix to the name I assigned it ("snps[]")
+
+#############################################
+
+#Exercise 2 part G#
+
+#For the SNP rs7584086_T", find the number of case individuals who have each genotype (0, 1, and 2). 
+#Hint: use the "table" function
+
+table(case_genotypes)
+#shows 12 entries with genotype 1, 3 entries/people with genotype 2
+
+#############################################
+
+#Exercise 2 part H#
+length(control_genotypes) #26 entries
+table(control_genotypes)
+#shows 25 entries with genotype 0. One entry has NA, so this still works.
+
 
 
 
