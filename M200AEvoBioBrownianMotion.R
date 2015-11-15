@@ -116,7 +116,26 @@ finalpolarMass
 #polarMassCommon - [1] 245.7656
 #finalpolarMass - [1] 245.8545
 #THIS RESULT SHOULD NOT MATTER IF IT'S A POLAR OR GRIZZLY BEAR as the same time is split between the two in the same way
-
-
-
+#
+#
+#Exercise 5
+#
+bmtrend<-function(time, mu, stdev){ # a function that requires mu which is the trend parameter showing how 
+  displace<-vector( , length=time) # set up an empty vector of the same length as time
+    for(i in 1:time){
+      displace[i]<-rnorm(1, mean=mu*i, sd=stdev) # sample from rnorm with a mean with a mean of mu 
+      }
+    traj<-cumsum(displace) # calculates the trajectory over time
+    return(traj)
+}
+#not getting an outright error message but have a warning on line 124 "missing argument to function call", not sure if spacing is the problem
+par(mfrow = c(1,1))
+bmtrend0.02<-replicate(10, bmtrend(100, 0.02, 1))
+bmtrendneg0.02<-replicate(10, bmtrend(100, -0.02, 1))
+cols1<-rainbow(10)
+cols2<-grey(0:10/10)
+plot(bmtrend0.02[,1], xlim=c(0,100), ylim=c(-150, 150), type="l", col=cols1[1], xlab="Time", ylab="Trait")
+for(i in 2:10) lines(bmtrend0.02[,i], col=cols1[i])
+for(i in 1:10) lines(bmtrendneg0.02[,i], col=cols2[i])
+#SUCCESS, correct-looking output
 
