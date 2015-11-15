@@ -138,4 +138,21 @@ plot(bmtrend0.02[,1], xlim=c(0,100), ylim=c(-150, 150), type="l", col=cols1[1], 
 for(i in 2:10) lines(bmtrend0.02[,i], col=cols1[i])
 for(i in 1:10) lines(bmtrendneg0.02[,i], col=cols2[i])
 #SUCCESS, correct-looking output
+#
+#Simulate two species with different mu's (0.5 and -0.5, 100 MY, )
+#15 runs of a trend process for two groups of species: one with a mu of 0.5 and the other with a mu of -0.5 for 100 MY
+par(mfrow = c(1,1))
+bmtrend0.02<-replicate(15, bmtrend(100, 0.05, 1))
+bmtrendneg0.02<-replicate(15, bmtrend(100, -0.05, 1))
+cols1<-rainbow(15)
+cols2<-grey(0:15/15)
+plot(bmtrend0.02[,1], xlim=c(0,100), ylim=c(-200, 200), type="l", col=cols1[1], xlab="Time", ylab="Trait")
+for(i in 2:10) lines(bmtrend0.02[,i], col=cols1[i])
+for(i in 1:10) lines(bmtrendneg0.02[,i], col=cols2[i])
+#success!
+#
+###################################################
+#
+#Ornstein-Uhlenbeck Model
+#
 
