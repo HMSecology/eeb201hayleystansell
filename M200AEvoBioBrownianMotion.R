@@ -193,3 +193,31 @@ plot(alpha0.4sigma0.05theta1[,1], type="l", main="alpha 0.4 sigma=0.05", ylim=c(
 for(i in 2:ncol(alpha0.4sigma0.05theta1)) lines(alpha0.4sigma0.05theta1[,i], type="l",col=colr[i-1] )
 #SUCCESSSSSSS
 #
+#
+#
+#Exercise 6 - comparing OM to BM motion. ############################
+#
+#
+#create a plot with the same parameters as this model ^ , but modeling BM (aka no ALPHA, no THETA)
+#BM with the same starting value, sigma, and time
+#
+#essentially what was done at the beginning? 
+#
+#########just colors = # of lineages, rnorm(X), X =time units
+#plotting 10 lineages with BM for 100 time units
+par(mfrow = c(1,1))
+displace<-rnorm(100)
+plot(displace)
+x<-cumsum(displace)
+plot(x, type="l", xlab="Time", ylab="Trait Value")
+#SUCCESS 
+cols<-rainbow(10) 
+#uses the "rainbow pallette" to assign colors to each line plotted. Is a now named-vector called "cols"
+plot(cumsum(rnorm(100)), type="l", ylim=c(-30,30))
+# simple for loop for each of the 50 colours
+for(i in 1:length(cols)) lines(cumsum(rnorm(100)), col=cols[i]) 
+#SUCCESS
+#
+#
+#
+
