@@ -154,5 +154,42 @@ for(i in 1:10) lines(bmtrendneg0.02[,i], col=cols2[i])
 ###################################################
 #
 #Ornstein-Uhlenbeck Model
+#the farther away from theta (optimal trait value), the stronger the alpha (effective "pull" towards theta)
+#sigma is again, the effective "step size" for the BM motion
+alpha<-0.4
+theta<-1
+sigma<-0.05
+x0<-0
 #
-
+OUalpha0.1_sample1<- x0 + alpha*(theta-x0)+sigma*(rnorm(1,mean=0))
+#^this is one sample in the simulation
+# the next sample(s) would be.....long because they build off the previous samples (aka steps??)
+OUalpha0.1_sample2<- OUalpha0.1_sample1 + alpha*(theta-OUalpha0.1_sample1)+sigma*(rnorm(1,mean=0))
+OUalpha0.1_sample3<- OUalpha0.1_sample2 + alpha*(theta-OUalpha0.1_sample2)+sigma*(rnorm(1,mean=0))
+plot(x=0:3, y=c(1,OUalpha0.1_sample1, OUalpha0.1_sample2, OUalpha0.1_sample3), type="l", main="Alpha=0.4")
+#plot successfully produced
+#
+#write a function to simplify this process
+ornstein_uhlenbecksim <- function(n,theta,alpha,sigma2,x0){# n is the number of time units to simulate for, 
+  dw <- rnorm(n, 0)
+  x <- c(x0)
+  for (i in 2:(n+1)) {
+    x[i] <- x[i-1] + alpha*(theta-x[i-1]) + sigma2*dw[i-1]
+  }
+  return(x);
+}
+#no issues with this function
+#10 trials modeling the OU process for 100 MY each
+par(mfrow = c(1,1))
+alpha<-0.4
+theta<-1
+sigma<-0.05
+x0<-0
+time = 100
+alpha0.4sigma0.05theta1<-replicate(10, ornstein_uhlenbecksim(time, theta, alpha, sigma, x0)) # replicate() 
+colr<-topo.colors(9)
+#plotting info here ------
+plot(alpha0.4sigma0.05theta1[,1], type="l", main="alpha 0.4 sigma=0.05", ylim=c(-2, 2))
+for(i in 2:ncol(alpha0.4sigma0.05theta1)) lines(alpha0.4sigma0.05theta1[,i], type="l",col=colr[i-1] )
+#SUCCESSSSSSS
+#
