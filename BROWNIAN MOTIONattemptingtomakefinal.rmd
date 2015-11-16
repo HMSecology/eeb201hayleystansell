@@ -1,4 +1,18 @@
-wd()
+---
+title: "BrownianMotionHMSMarkdown"
+author: "Hayley Stansell"
+date: "November 15, 2015"
+output: pdf_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. 
+
+Embedded code:
+
+```{r}
+
 getwd()
 setwd("C:\\Users\\Hayley\\eeb201hayleystansell")
 getwd()
@@ -406,3 +420,7 @@ delta.aicc
 #[1] 67.22069  0.00000 57.50865 69.48751
 ?trend
 ??trend
+
+
+```
+
