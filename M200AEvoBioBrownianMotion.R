@@ -383,6 +383,11 @@ trend.model$opt$lnL
 trend.model$opt$aicc
 #
 #
+all.aicc <- c(BM.model$opt$aicc, OU.model$opt$aicc, trend.model$opt$aicc, EB.model$opt$aicc)
+delta.aicc <- all.aicc - min(all.aicc) # This may seem a bit circumstantial for just two models, but 
+delta.aicc
+#
+#
 #FINAL COMPARISON
 #
 #EB likelihood ----- [1] 12.3086
@@ -396,3 +401,7 @@ trend.model$opt$aicc
 #OU AICc-------------- [1] -87.58297
 #
 # # Higher AICc score is worse! Lower AICc score is better!
+#
+#deltaAIC's ------
+#[1] 67.22069  0.00000 57.50865 69.48751
+
