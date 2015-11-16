@@ -387,10 +387,12 @@ trend.model$opt$aicc
 #
 #EB likelihood ----- [1] 12.3086
 #trend likelihood ----- [1] 18.29803
+#BM likelihood ------ [1] 12.3088
+#OU likelihood ------- [1] 47.05235
 #
 #EB AICc  --------- [1] -18.09546
 #trend AICc ----------- [1] -30.07432
+#BM AICc ------------ [1] -20.36228
+#OU AICc-------------- [1] -87.58297
 #
-
-
-
+# # Higher AICc score is worse! Lower AICc score is better!
