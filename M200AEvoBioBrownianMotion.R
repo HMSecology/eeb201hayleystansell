@@ -273,6 +273,7 @@ trait <- dat[,2] # Selecting a trait
 names(trait) <- tre$tip.label # Assigning the appropriate tip labels to the trait object
 #ok, no errors
 #
+#
 #Demo - fit a BM model with function "fit continuous" ############################################################
 #
 BM.model <- fitContinuous(tre, trait, model="BM")
@@ -323,4 +324,73 @@ OU.model$opt$lnL
 #[1] 12.3088  ---output for BM
 #[1] 47.05235 ----output for OU
 #OU seems to be a better model fit, as it has a higher likelihood estimate
+#
+#Assuming this below is the likelihood ratio test??
+delta.BM.OU <- 1-pchisq(2*(OU.model$opt$lnL - BM.model$opt$lnL),1)
+delta.BM.OU
+# [1] 1.110223e-16
+#Not...really....sure what this means/is showing/how to interpret...
+#
+#AIC scores (corrected - AICc)
+BM.model$opt$aicc # Higher AICc score is worse!
+OU.model$opt$aicc # Lower AICc score is better!
+#OU score is -87, BM score is -20 ...so OU is doing better, consistent with maximum likelihood estimate
+all.aicc <- c(BM.model$opt$aicc, OU.model$opt$aicc)
+delta.aicc <- all.aicc - min(all.aicc) # This may seem a bit circumstantial for just two models, but 
+delta.aicc # delta AIC or AICC scores >2 are ususally considered to provide positive support
+# [1] 67.22069  0.00000
+#  ^the difference between the AICc scores for BM and OU models
+#
+#Akaike weights:
+rel.L <- exp(-delta.aicc*0.5)
+AK.weights <- rel.L/sum(rel.L)
+AK.weights
+AK.weights
+# [1] 2.530532e-15 1.000000e+00  ----------------output-------------------------
+#
+#
+# Exercise 7 ###################################################################
+#
+?fitContinuous
+#INFO:
+#fitContinuous(phy, dat, SE = 0,
+#model = c("BM","OU","EB","trend","lambda","kappa","delta","drift","white"),
+#bounds= list(), control = list(method = c("subplex","L-BFGS-B"),
+#niter = 100, FAIL = 1e+200, hessian = FALSE, CI = 0.95), ncores=NULL, ...)
+#
+#WORKING WITH EYE WIDTH
+names(trait)
+trait
+#not clear if that's whats' getting worked with, since I'm getting a name *and* a measurement for "trait"....
+#already have BM and OU models, assuming they were looking at eye width
+#need EB and trend
+#
+#EB model
+EB.model <- fitContinuous(tre, trait, model="EB")
+EB.model
+#EB likelihood ----- [1] 12.3086
+EB.model$opt$lnL
+#EB AICc  --------- [1] -18.09546
+EB.model$opt$aicc
+#
+#
+#trend model
+trend.model <- fitContinuous(tre, trait, model="trend")
+trend.model
+#trend likelihood ----- [1] 18.29803
+trend.model$opt$lnL
+#trend AICc ----------- [1] -30.07432
+trend.model$opt$aicc
+#
+#
+#FINAL COMPARISON
+#
+#EB likelihood ----- [1] 12.3086
+#trend likelihood ----- [1] 18.29803
+#
+#EB AICc  --------- [1] -18.09546
+#trend AICc ----------- [1] -30.07432
+#
+
+
 
