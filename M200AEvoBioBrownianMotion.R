@@ -247,6 +247,80 @@ for(i in 2:ncol(alpha0.5sigma0.1theta1)) lines(alpha0.5sigma0.1theta1[,i], type=
 #
 #NICE
 #
+#EVEN MORE --------------
+#
+plot(alpha0.1sigma0.01theta1[,1], type="l", main="alpha0.1 sigma=0.01", ylim=c(-2, 2))
+for(i in 2:ncol(alpha0.1sigma0.01theta1)) lines(alpha0.1sigma0.01theta1[,i], type="l", col=colr[i-1] )
+plot(alpha0.1sigma0.1theta1[,1], type="l", main="alpha0.1 sigma=0.1", ylim=c(-2, 2))
+for(i in 2:ncol(alpha0.1sigma0.1theta1)) lines(alpha0.1sigma0.1theta1[,i], type="l", col=colr[i-1] )
+plot(alpha0sigma0.01theta1[,1], type="l", main="alpha0 sigma=0.01", ylim=c(-2, 2))
+for(i in 2:ncol(alpha0sigma0.01theta1)) lines(alpha0sigma0.01theta1[,i], type="l", col=colr[i-1] )
+plot(alpha0sigma0.1theta1[,1], type="l", main="alpha0 sigma=0.1", ylim=c(-2, 2))
+for(i in 2:ncol(alpha0sigma0.1theta1)) lines(alpha0sigma0.1theta1[,i], type="l", col=colr[i-1] )
 #
 #
+##################################################################################################################
+#MODEL FITTING EXERCISE
+#
+#just copy/pasted files into current WD
+getwd()
+library(ape)
+library(geiger)
+library(parallel)
+tre <- read.tree("Haemulidae4models.tre")
+dat<-read.csv("Haemulidae4models.csv", stringsAsFactors=FALSE) # Contains data on standard length, eye(???? no idea)
+trait <- dat[,2] # Selecting a trait
+names(trait) <- tre$tip.label # Assigning the appropriate tip labels to the trait object
+#ok, no errors
+#
+#Demo - fit a BM model with function "fit continuous" ############################################################
+#
+BM.model <- fitContinuous(tre, trait, model="BM")
+#not seeing any output at this time
+BM.model
+#ahhhhh okay, duh. 
+#GEIGER-fitted comparative model of continuous data ###############OUTPUT##################
+#fitted 'BM' model parameters:
+#  sigsq = 0.002143
+#z0 = 2.233988
+#
+#model summary:
+#  log-likelihood = 12.308798
+#AIC = -20.617596
+#AICc = -20.362277
+#free parameters = 2
+#
+#Convergence diagnostics:
+#  optimization iterations = 100
+#failed iterations = 0
+#frequency of best fit = 1.00
+#
+#object summary:
+#  'lik' -- likelihood function
+# 'bnd' -- bounds for likelihood search
+# 'res' -- optimization iteration summary
+# 'opt' -- maximum likelihood parameter estimates
+#
+BM.model$bnd
+#                  mn           mx
+# sigsq 7.124576e-218 2.688117e+43
+BM.model$opt
+BM.model$opt$lnL
+BM.model$opt$aicc # You get the drift :)
+#
+#Demo - fit OU Model with fit continuous #########################################################################
+#
+OU.model <- fitContinuous(tre, trait, model="OU")
+# Warning message:
+# In fitContinuous(tre, trait, model = "OU") :
+#  Parameter estimates appear at bounds:
+#  alpha
+OU.model$bnd
+OU.model <- fitContinuous(tre, trait, model="OU", bounds=list(alpha=c(0, 150)))
+#what are the maximum likelihood estimates for the BM and OU models? see below:
+BM.model$opt$lnL
+OU.model$opt$lnL
+#[1] 12.3088  ---output for BM
+#[1] 47.05235 ----output for OU
+#OU seems to be a better model fit, as it has a higher likelihood estimate
 
