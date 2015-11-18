@@ -238,4 +238,14 @@ finaloutput[[1]][[1]]
 finaloutput[1][1]
 names(fitDiversitree(tt.func))
 fitDiversitree(tt.func)$pars
-
+#   lambda        mu 
+#10.208447  5.592388 
+#this is good - it's showing a lambda and a mu...... need a list though? shouldn't it be 100 lambda's, 100 mu's?
+?list
+as.list(fitDiversitree(tt.func)$pars)
+#got the same output, just in a "list"
+#$lambda
+#[1] 10.20849
+#
+#$mu
+#[1] 5.592448
