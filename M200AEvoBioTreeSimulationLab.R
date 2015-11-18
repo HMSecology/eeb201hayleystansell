@@ -146,6 +146,7 @@ for (i in 1:REPS){
 #this has no problem, 
 #change to 100, no problem
 #the simulation is the tree simulation, so that should be there in the for loop......
+??fitDiversitree
 REPS <- 100
 REPS
 myResults <- numeric(length=REPS)
@@ -160,16 +161,23 @@ for (i in 1:REPS){
   # Using function simulateTree to simulate a birth death tree:
   # Example, lambda = 10, mu = 5
   pars <- c(10, 5); #in order: lambda, mu
-  tt <- simulateTree(pars, max.taxa=100)
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
   tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
   
   #   tmp is now the result of our simulation.
   #   We will now store it in the results vector: 
   
   #----------------------previous results: myResults[i] <- tmp
-  myResults[i] <-length(tt)
+  ########################myResults[i] <-length(tt)
   
 }
+summary(fitDiversitree(tt.func))
+finaloutput<- summary(fitDiversitree(tt.func))
+finaloutput[[1]][[1]]
+finaloutput[1][1]
+
 #Warning messages still there....
 #the PROBLEM is with myResults [i] <- tt
 #checking what "tt" and "myResults" looks like
