@@ -314,5 +314,5 @@ for (i in 1:REPS){
   ########################myResults[i] <-length(tt)
   
 }
-as.list(fitDiversitree(tt.func)$pars)
-#still no errors, good..................but just again, one value per thing.....
+myResults
+#generates a list 100 spots long, but only has the one lambda in the 100th spot. 
