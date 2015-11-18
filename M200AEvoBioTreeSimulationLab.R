@@ -316,3 +316,85 @@ for (i in 1:REPS){
 }
 myResults
 #generates a list 100 spots long, but only has the one lambda in the 100th spot. 
+#-------------------------------------------------------------------------------------EXERCISE ONE TAKE FIVE
+REPS <- 100
+REPS
+myResults <- numeric(length=REPS)
+myResults
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
+  summary(fitDiversitree(tt.func))
+  finaloutput<- summary(fitDiversitree(tt.func))
+  fitDiversitree(tt.func)$pars[[1]][[1]] #----------------this gets the lambda to output alone
+  myResults[i]<- fitDiversitree(tt.func)$pars[[1]][[1]] #-----------------nothing bad happening here....
+  #   tmp is now the result of our simulation.
+  #   We will now store it in the results vector: 
+  
+  #----------------------previous results: myResults[i] <- tmp
+  ########################myResults[i] <-length(tt)
+  
+}
+
+myResults
+#generates .................NON-ZEROS????? not sure what is different, other than I typed in line 349 "myResults[i]"
+#...which returned one value ([1] 10.65872), then deleted that and executed line 350 (myResults) again....anywho...
+#
+#myResults
+#[1] 10.564712 11.124008  7.708430 10.375060 13.133952 13.986790  8.298091  9.377686 13.396869 10.085819 12.701470 13.250707
+#[13] 11.169086  8.387705 11.404952  9.347448  9.024440 11.959539 14.255858  9.635809 10.057936  9.614476 10.841234 15.742211
+#[25]  8.707598  9.312122 11.890291  7.859690 11.384383  8.029795 15.580418  7.343947  8.879070  7.640789  8.211915 12.011827
+#[37]  7.713998 11.937973 10.039225 11.411142  9.474223  8.120601 10.277090  8.736183 13.008636 10.699424  9.035406  9.326144
+#[49] 13.838332  9.094192 11.875985 12.204478  9.896398  7.536383 11.828437  7.601313 11.064531 11.596795 12.434150  9.248458
+#[61]  8.402248 10.207672  7.313502  9.988052  9.173694 15.454996 10.671979 12.098639 10.821827  9.413293 12.008835 13.660082
+#[73] 11.387582 10.027658 12.496453  9.240023  9.231328 12.278881  8.160843 10.022397 14.083078  8.627564 10.177580 10.606892
+#[85]  9.432656  9.144337 11.951256  9.892600 12.399523  9.259037  7.944824  9.314829  8.357183 11.571660 12.018892 11.989941
+#[97] 11.058536  9.432203  7.024850 10.658719
+#
+#
+#getting the mu's now....
+fitDiversitree(tt.func)$pars
+fitDiversitree(tt.func)$pars[[2]][[1]] #-------------------this gives the Mu
+#
+REPS <- 100
+REPS
+myOtherResults <- numeric(length=REPS)
+myOtherResults
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
+  summary(fitDiversitree(tt.func))
+  finaloutput<- summary(fitDiversitree(tt.func))
+  fitDiversitree(tt.func)$pars[[2]][[1]] #----------------this gets the mu to output alone
+  myOtherResults[i]<- fitDiversitree(tt.func)$pars[[2]][[1]] 
+  #   fitDiversitree(tt.func)$pars[[2]][[1]] is now the result of our simulation.
+  #   We will now store it in the results vector: 
+  #-----------------myOtherResults[i] <- blahblahblah
+  
+  
+}
+
+myOtherResults
+#SUCCESSSSSSSSSSSSSSSSSSSSSS
