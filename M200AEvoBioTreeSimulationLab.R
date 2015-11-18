@@ -249,3 +249,70 @@ as.list(fitDiversitree(tt.func)$pars)
 #
 #$mu
 #[1] 5.592448
+#-------------------------------------------------------------------------------------EXERCISE ONE TAKE THREE
+REPS <- 100
+REPS
+myResults <- numeric(length=REPS)
+myResults
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
+  summary(fitDiversitree(tt.func))
+  finaloutput<- summary(fitDiversitree(tt.func))
+  fitDiversitree(tt.func)$pars
+  
+  #   tmp is now the result of our simulation.
+  #   We will now store it in the results vector: 
+  
+  #----------------------previous results: myResults[i] <- tmp
+  ########################myResults[i] <-length(tt)
+  
+}
+as.list(fitDiversitree(tt.func)$pars)
+#still no errors, good..................but just again, one value per thing.....
+?pars
+??pars
+??lambda
+#-------------------------------------------------------------------------------------EXERCISE ONE TAKE FOUR
+REPS <- 100
+REPS
+myResults <- numeric(length=REPS)
+myResults
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
+  summary(fitDiversitree(tt.func))
+  finaloutput<- summary(fitDiversitree(tt.func))
+  fitDiversitree(tt.func)$pars
+  
+  #   tmp is now the result of our simulation.
+  #   We will now store it in the results vector: 
+  
+  #----------------------previous results: myResults[i] <- tmp
+  ########################myResults[i] <-length(tt)
+  
+}
+as.list(fitDiversitree(tt.func)$pars)
+#still no errors, good..................but just again, one value per thing.....
