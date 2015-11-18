@@ -305,8 +305,8 @@ for (i in 1:REPS){
   fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
   summary(fitDiversitree(tt.func))
   finaloutput<- summary(fitDiversitree(tt.func))
-  fitDiversitree(tt.func)$pars
-  
+  fitDiversitree(tt.func)$pars[[1]][[1]] #----------------this gets the lambda to output alone
+  myResults[i]<- fitDiversitree(tt.func)$pars[[1]][[1]] #-----------------nothing bad happening here....
   #   tmp is now the result of our simulation.
   #   We will now store it in the results vector: 
   
