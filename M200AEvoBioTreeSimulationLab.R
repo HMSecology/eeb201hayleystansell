@@ -177,7 +177,8 @@ summary(fitDiversitree(tt.func))
 finaloutput<- summary(fitDiversitree(tt.func))
 finaloutput[[1]][[1]]
 finaloutput[1][1]
-
+names(fitDiversitree(tt.func))
+fitDiversitree(tt.func)$pars
 #Warning messages still there....
 #the PROBLEM is with myResults [i] <- tt
 #checking what "tt" and "myResults" looks like
@@ -203,6 +204,38 @@ fitDiversitree(tt.func)
 #$AIC
 #[1] -934.6242
 #------------------------^sample output
-
-
+#
+#----------------------------------------------------------------------STARTING EXERCISE ONE AGAIN-------------------
+REPS <- 100
+REPS
+myResults <- numeric(length=REPS)
+myResults
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  tt.func <- make.bd(tt)
+  fitDiversitree(tt.func) #fitting those 100 trees to a birth-death model, no errors!
+  
+  #   tmp is now the result of our simulation.
+  #   We will now store it in the results vector: 
+  
+  #----------------------previous results: myResults[i] <- tmp
+  ########################myResults[i] <-length(tt)
+  
+}
+summary(fitDiversitree(tt.func))
+finaloutput<- summary(fitDiversitree(tt.func))
+finaloutput[[1]][[1]]
+finaloutput[1][1]
+names(fitDiversitree(tt.func))
+fitDiversitree(tt.func)$pars
 
