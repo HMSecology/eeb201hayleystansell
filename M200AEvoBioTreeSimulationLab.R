@@ -438,7 +438,8 @@ for (i in 1:REPS){
   # Using function simulateTree to simulate a birth death tree:
   # Example, lambda = 10, mu = 5
   pars <- c(10, 5); #in order: lambda, mu
-  tt <- simulateTree(pars, max.taxa=1000) #simulating 100 trees, #NEED TO REMOVE MAX TAXA....or not, changing to 1000 to see
+  tt <- simulateTree(pars, max.taxa=Inf) #simulating 100 trees, #NEED TO REMOVE MAX TAXA....or not, changing to 1000 to see
+                                                                  #changing max.taxa to Inf
   tt
   #THIS IS CURRENTLY RUNNING FOR A LONG TIME, NOT SURE IF THERE'S A LOOP ISSUE OR JUST TAKES A WHILE. ABLE TO HIT "STOP" AND GET ">" BACK
   #mySpecies[i]<-number of tips for tt
@@ -451,3 +452,7 @@ for (i in 1:REPS){
 #FINISHED after ~5 min
 mySpecies
 #okay, have a list of 100 values, but they are all 1000.....
+?simulateTree
+??simulateTree
+?simulate
+#OKAY - need command " View(simulateTree) "
