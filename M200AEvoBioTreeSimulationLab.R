@@ -442,7 +442,11 @@ for (i in 1:REPS){
   tt
   #THIS IS CURRENTLY RUNNING FOR A LONG TIME, NOT SURE IF THERE'S A LOOP ISSUE OR JUST TAKES A WHILE. ABLE TO HIT "STOP" AND GET ">" BACK
   #mySpecies[i]<-number of tips for tt
+  mySpecies[i]<-((tt$Nnode) + 1) #no problems here
   
 }
 
+#tt$Nnode #this is a valid command. if has 1000 tips and 999 internal nodes, tips = nodes +1 ?
+#getting a long run-time with addition of mySpecies[i] line 445
+mySpecies
 
