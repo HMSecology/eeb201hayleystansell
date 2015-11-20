@@ -441,8 +441,8 @@ for (i in 1:REPS){
   tt <- simulateTree(pars, max.taxa=1000) #simulating 100 trees, #NEED TO REMOVE MAX TAXA....or not, changing to 1000 to see
   tt
   #THIS IS CURRENTLY RUNNING FOR A LONG TIME, NOT SURE IF THERE'S A LOOP ISSUE OR JUST TAKES A WHILE. ABLE TO HIT "STOP" AND GET ">" BACK
-  
+  #mySpecies[i]<-number of tips for tt
   
 }
-summary(tt)
+
 
