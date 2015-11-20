@@ -448,5 +448,6 @@ for (i in 1:REPS){
 
 #tt$Nnode #this is a valid command. if has 1000 tips and 999 internal nodes, tips = nodes +1 ?
 #getting a long run-time with addition of mySpecies[i] line 445
+#FINISHED after ~5 min
 mySpecies
-
+#okay, have a list of 100 values, but they are all 1000.....
