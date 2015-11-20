@@ -409,8 +409,35 @@ myOtherResults
 #[78]  5.2058009  5.0648929  3.8844985  6.9450091  4.4604918  6.3111104  3.6921491  6.8908605  2.9439830  6.1173978  4.8446970
 #[89]  5.4738218  2.3932389  5.6306194 11.5228453  9.3228118  4.2943635  8.6552660  4.4840239  8.3229169  7.0301236  3.2278562
 #[100]  9.1786562
-
 hist(myResults, main = "Lambda(birth) for 100 Trees")
 hist(myOtherResults, main = "Mu(death) for 100 Trees")
 ?hist
+#
+#
+#
+###########################################################################################EXERCISE 2##########################
+#
+#Simulate 100 more trees with constant birth/death. Extract number of species from each tree (results vector mySpecies). 
+#need to remove fitting the bd model. 
+#
+#
+REPS <- 100
+REPS
+mySpecies <- numeric(length=REPS)
+mySpecies
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 10, mu = 5
+  pars <- c(10, 5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=100) #simulating 100 trees
+  tt
+  
+
+
 
