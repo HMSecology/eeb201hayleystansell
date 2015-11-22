@@ -461,3 +461,14 @@ mySpecies
 ??simulateTree
 ?simulate
 #OKAY - need command " View(simulateTree) "
+#
+#SUCCESSSSSS!!!!!!! 
+#[1]     3     4    19    11   115     2     2     2    40    56     5     2     7     3     2   228    50     4     7    34     4     2     2    36
+#[25]    17     3     2     7     4    17     5     3    59    10     2     4     7     3     5     4     3    42   155    28     2     2    11     8
+#[49]   474     2     2     2    18     2   109     5 34008     2    10     2 31629    24    17    13     2     2    10     2    26    81    17   191
+#[73]     2     2  2785  1324     4    33    18   352     2     7    43     4   125     2     3   171   190   511     2     5     3     3    10     4
+#[97]    12    71    20     4
+hist(mySpecies)
+?hist
+?log
+hist(mySpecies, main = "Frequency of Number of branches over 100 trials", xlab = "number of branches", ylab = "frequency")
