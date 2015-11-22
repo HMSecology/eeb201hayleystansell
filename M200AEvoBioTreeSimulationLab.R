@@ -472,3 +472,44 @@ hist(mySpecies)
 ?hist
 ?log
 hist(mySpecies, main = "Frequency of Number of branches over 100 trials", xlab = "number of branches", ylab = "frequency")
+#
+#TRIAL 2
+#
+REPS <- 100
+REPS
+mySpecies2 <- numeric(length=REPS)
+mySpecies2
+?numeric
+for (i in 1:REPS){
+  
+  #  Here we would do the simulation:
+  
+  #---------------------previous simulation: tmp <- rnorm(10)
+  
+  # Using function simulateTree to simulate a birth death tree:
+  # Example, lambda = 7, mu = 5
+  pars <- c(5,5); #in order: lambda, mu
+  tt <- simulateTree(pars, max.taxa=Inf, max.t=200, include.extinct=T) #simulating 100 trees, #NEED TO REMOVE MAX TAXA....or not, changing to 1000 to see
+  #changing max.taxa to Inf....TAKES TOO LONG? adding a max.t = 500
+  #still getting long run time ....adding "include.extinct=F")
+  #the problem seems to be with 445 "tt", so removing that, instead looking for just Nnode. 
+  #A-HA! - setting lambda an mu equal to one another got it to stop running indefinitely. 
+  #tt
+  tt$Nnode
+  
+  #THIS IS CURRENTLY RUNNING FOR A LONG TIME, NOT SURE IF THERE'S A LOOP ISSUE OR JUST TAKES A WHILE. ABLE TO HIT "STOP" AND GET ">" BACK
+  #mySpecies[i]<-number of tips for tt
+  mySpecies2[i]<-((tt$Nnode) + 1) #no problems here
+  
+}
+mySpecies2
+hist(mySpecies2, main="2nd run of 100 simulation trials", ylab="frequency", xlab="number of branches")
+#
+#
+#
+#
+#
+#
+#
+#
+###############################################################################################EXERCISE THREE##############
