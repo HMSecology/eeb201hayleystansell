@@ -133,4 +133,6 @@ sum(freqs3[10000, ] == 1)
 # 100 columns all rows .... freqs3[10000,100]
 # x is 0-10000, y is 0-1
 #try a small number freqs3[1000,5]
-plot(freqs3[1000,5])
+
+matplot(freqs3 [1:1500, 1:100], type= "l", lty = 1)
+
