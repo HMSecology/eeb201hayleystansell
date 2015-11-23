@@ -54,3 +54,8 @@ count/(2*N)
 # freqs<- matrix(nrow=T,ncol=L) #sets up framework for matrix to get allel freqs each generation.
 #                                 each ROW is a generation, each COLUMN is a SNP
 #
+T<- 8
+L<- 3
+freqs<- matrix(nrow = T, ncol = L)
+freqs
+#success!
