@@ -109,3 +109,13 @@ for(i in 2:T){
 freqs3
 #Success!!!
 #data matrix too big
+#
+#a) How many SNPs(L=1000) @ T=10,000 are at freq 0?
+#   row=T, so at [10,000,], values = 0 --- L=0 at that point
+?sum
+?frequency
+#frequency of zeros at [10000, ], freq that L's are zero
+# == ----says if X == # ...if x equal to a number. So, X == 0
+sum(freqs3[10000, ] == 0) 
+#[1] 906
+#success!!
