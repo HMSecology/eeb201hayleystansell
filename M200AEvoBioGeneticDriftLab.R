@@ -53,9 +53,37 @@ count/(2*N)
 # L<- 3
 # freqs<- matrix(nrow=T,ncol=L) #sets up framework for matrix to get allel freqs each generation.
 #                                 each ROW is a generation, each COLUMN is a SNP
+#Hint: First row of this matrix can/should have the initial allele frequency (p). 
+#       Write a loop that will iterate through each generation and perform binom sampling.
 #
 T<- 8
 L<- 3
 freqs<- matrix(nrow = T, ncol = L)
 freqs
 #success!
+#saying that pInitial(or pPrev)=0.25, N(size)=100 individuals, n(aka L)= 3 indept. SNPs
+#so, pCurrent= count/(2N), and count= rbinom(3, 2*100, pPrev) for each. pCurrent becomes pPrev each new generation
+#pPrev is all SNPs having p of 0.25
+freqs[1,]<-0.25
+freqs[1,]
+N<-100
+for(i in 2:T){
+  count<- rbinom(L,2*N, freqs[(i-1),])
+  freqNew<-(count/(2*N))
+  freqs[i,]<-freqNew
+}
+freqs
+#[,1]  [,2]  [,3]
+#[1,] 0.250 0.250 0.250
+#[2,] 0.295 0.280 0.265
+#[3,] 0.310 0.300 0.275
+#[4,] 0.270 0.370 0.235
+#[5,] 0.305 0.365 0.230
+#[6,] 0.405 0.350 0.210
+#[7,] 0.475 0.310 0.250
+#[8,] 0.510 0.260 0.285
+#
+#
+#############################################################################################EXERCISE THREE###################
+#
+#
