@@ -108,3 +108,4 @@ for(i in 2:T){
 }
 freqs3
 #Success!!!
+#data matrix too big
