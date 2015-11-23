@@ -166,3 +166,13 @@ sum(freqs3[10000, ] == 0)
 ##################################f) How many are at freq 1 at T = 10000
 sum(freqs3[10000, ] == 1)
 #[1] 108
+#################################g) Does this agree with the theoretical prediction for fixation?
+#Like the previous simulation, I think this agrees with the idea of fixation for a neutral allele, 
+#as most of the frequencies have shifted to frequency of 0. The result is not as extreme as it was for p = 0.1
+#
+#
+#
+#
+#
+######################################################################################EXERCISE FOUR#######################
+#
