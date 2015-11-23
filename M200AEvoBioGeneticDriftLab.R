@@ -86,4 +86,25 @@ freqs
 #
 #############################################################################################EXERCISE THREE###################
 #
+#Use the function just written to simulate drift with these parameters:
+N<-100
+L<-1000
+T<-10000
+p<-0.1
 #
+#
+freqs3<- matrix(nrow = T, ncol = L)
+freqs3
+#success!
+#saying that pInitial(or pPrev)=0.25, N(size)=100 individuals, n(aka L)= 3 indept. SNPs
+#so, pCurrent= count/(2N), and count= rbinom(3, 2*100, pPrev) for each. pCurrent becomes pPrev each new generation
+#pPrev is all SNPs having p of 0.25
+freqs3[1,]<-0.1 #this is the pPrev(pInitial)
+freqs3[1,]
+for(i in 2:T){
+  count<- rbinom(L,2*N, freqs3[(i-1),])
+  freqNew3<-(count/(2*N))
+  freqs3[i,]<-freqNew3
+}
+freqs3
+#Success!!!
