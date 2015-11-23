@@ -117,10 +117,20 @@ freqs3
 ?sum
 ?frequency
 #frequency of zeros at [10000, ], freq that L's are zero
-# == ----says if X == # ...if x equal to a number. So, X == 0
+########################### == ----says if X == # ...if x equal to a number. So, X == 0, "tests" include < , > , and ==
 sum(freqs3[10000, ] == 0) 
 #[1] 906
 #success!!
 ###################################b) How many are at frequency 1?
 sum(freqs3[10000, ] == 1) 
 #[1] 94
+###################################c) Does this value agree with theoretical prediction for prob of fixation of a neutral?
+#Yes, this supports the idea that as time progresses, a given allele will either drop out of existence 
+#or become present across the whole population...becoming "fixed". 
+#
+#
+###################################d) Make a plot of freq. trajectories for 100 SNPs. 
+# 100 columns all rows .... freqs3[10000,100]
+# x is 0-10000, y is 0-1
+#try a small number freqs3[1000,5]
+plot(freqs3[1000,5])
