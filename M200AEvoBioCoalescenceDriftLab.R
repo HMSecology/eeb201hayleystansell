@@ -45,4 +45,12 @@ mean(rexp(10000, rate))
 density(rexp(10000,rate))
 plot(density(rexp(10000,rate)))
 #Success!!
+##########################e) what is the standard deviation of the coal. times?
+output<-rexp(10000,rate)
+density(output)
+sd(output)
+#[1] 20371.65
+#
+#
+#############################################################################################EXERCISE SEVEN#############
 
