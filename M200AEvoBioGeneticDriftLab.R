@@ -246,3 +246,15 @@ for(i in 2:T){
 #plot 4c
 matplot(freqs4c [1:10000, 1:300], type= "l", lty = 1, main = "Drift for Population Size 500 for 10000 gen", xlab = "Generations")
 #SUCCESS!
+#
+#
+#
+#############################################b) Based on the plots, how does pop. size affect allele freq. change?
+
+#############################################c) For each pop. size, in what proportion of simulation replicates
+# did the derived allele become fixed by the end of the simulation?
+
+#############################################d) How is this probability affected by the pop. size?
+
+#############################################e) How does this prob. of fixation estimated from the simulations match
+#with the theoretical prediction?
