@@ -32,5 +32,17 @@ hist(outputbig)
 rate<-1/20000
 mean(rexp(10000, rate))
 #[1] 19712.04
-
+##########################a) what is the average time to most recent common ancestor in your simulation?
+#19712.04
+##########################b) what is the theoretical expectation?
+#20,000
+##########################c) how do the values compare?
+# They are very close to one another. 
+##########################d) make a density plot of simulated coalescent times
+??densityplot
+?density
+?plot
+density(rexp(10000,rate))
+plot(density(rexp(10000,rate)))
+#Success!!
 
