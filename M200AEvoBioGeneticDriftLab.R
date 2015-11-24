@@ -176,3 +176,27 @@ sum(freqs3[10000, ] == 1)
 #
 ######################################################################################EXERCISE FOUR#######################
 #
+#repeat simulation, with N=10500 and N=1000 . p = 0.1, L = 1000, T = 10000
+#
+#
+# Make population N = 10500
+N<-10500
+L<-1000
+T<-10000
+p<-0.1
+#
+#
+freqs4a<- matrix(nrow = T, ncol = L)
+freqs4a
+#success!
+#saying that pInitial(or pPrev)=0.25, N(size)=100 individuals, n(aka L)= 3 indept. SNPs
+#so, pCurrent= count/(2N), and count= rbinom(3, 2*100, pPrev) for each. pCurrent becomes pPrev each new generation
+#pPrev is all SNPs having p of 0.25
+freqs4a[1,]<-0.1 #this is the pPrev(pInitial)
+freqs4a[1,]
+for(i in 2:T){
+  count<- rbinom(L,2*N, freqs4a[(i-1),])
+  freqNew4a<-(count/(2*N))
+  freqs4a[i,]<-freqNew4a
+}
+
