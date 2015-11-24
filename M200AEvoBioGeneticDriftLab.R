@@ -224,3 +224,25 @@ for(i in 2:T){
 #plot 4b
 matplot(freqs4b [1:7000, 1:300], type= "l", lty = 1, main = "Drift for Population Size 500 for 10000 gen", xlab = "Generations")
 #SUCCESS
+#
+#
+#Make population N= 1000
+N<-1000
+L<-1000
+T<-10000
+p<-0.1
+#
+#
+freqs4c<- matrix(nrow = T, ncol = L)
+freqs4c
+freqs4c[1,]<-0.1 #this is the pPrev(pInitial)
+freqs4c[1,]
+for(i in 2:T){
+  count<- rbinom(L,2*N, freqs4c[(i-1),])
+  freqNew4c<-(count/(2*N))
+  freqs4c[i,]<-freqNew4c
+}
+#success! 4c
+#plot 4c
+matplot(freqs4c [1:10000, 1:300], type= "l", lty = 1, main = "Drift for Population Size 500 for 10000 gen", xlab = "Generations")
+#SUCCESS!
