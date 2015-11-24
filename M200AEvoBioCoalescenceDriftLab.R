@@ -19,4 +19,18 @@ outputbig
 mean(outputbig)
 #[1] 0.4781231
 hist(outputbig)
+#
+#
+#############################################################################################Exercise FIVE###############
+#
+#From previous work, it seems that the rate of coalescence should be 1/2N , where 2N is number of chromosomes
+#
+#
+#############################################################################################EXERCISE SIX###############
+#
+#
+rate<-1/20000
+mean(rexp(10000, rate))
+#[1] 19712.04
+
 
