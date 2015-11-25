@@ -301,5 +301,39 @@ plot(geneologies, output)
 #
 #need to drag down script for Exercise 8
 #
+geneologies<-rexp(10000, rate8)
+geneologies
+#okay
+#mean(rpois(geneologies, 1e-04))
+#[1] 0 ....hmmmmmmm
+#rpois(geneologies, 1e-04)
+#all values are zero here.... hmmm
+#for geneologies[i-10000]
 
+for (i in geneologies){
+  rate<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rate) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-mean(rpois(i,rate))
+}
+#slow-ish, but not locked up
+output
+##############################################trying code from exercise 12, considering the vector length problem
+#
+#rate is 1/2n = 1/20000
+# change rate end to 12
+# mutation rate for 10kbp is supposedly 1e-04
+rate12<-1/20000
+rexp(10000, rate12) #gets 10,000 simulations of geneologies (coal. times) given 2N = 20000. 
+#10,000 similar/distributed coal. times. given those coal times...each output is an n...10,000 n's / draws for the Poisson
+geneologies12<-rexp(10000, rate12)
+geneologies12
+#bring up loop again:
+for (i in length(geneologies12)){ #for each number in the length of geneologies (10,000), do this:
+  
+  rateTWELVE<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rateTWELVE) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-(rpois(i,rateTWELVE))
+}
+
+length(output) 
 
