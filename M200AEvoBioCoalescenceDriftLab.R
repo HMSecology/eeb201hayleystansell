@@ -130,10 +130,13 @@ rate
 for (i in geneologies){
   rate<-1e-04*geneologies[i]
   rpois(i, rate)
+  outputcheck<-rpois(i, rate)
   output<-mean(rpois(i,rate))
 }
 #slow-ish, but not locked up
 output
+outputcheck
+length(outputcheck)
 #[1] 0.0001249649
 #very close to the rate!
 #################################b) What is the average number of SNPs per geneology?
@@ -258,4 +261,21 @@ plot(density(output), main="Exercise 10, 2N =2000, number of SNPs per replicate"
 ??ggplot
 library(ggplot2)
 #ehhhhhh, just try basic plot(x,y)
-
+?plot
+plot(geneologies, output)
+length(geneologies) #[1] 10000
+length(output) #[1] 52 .............hmmmmmm
+length(rateTEN) #[1] 10000
+#bring up loop again:
+for (i in length(geneologies)){
+  
+rateTEN<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rateTEN) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-(rpois(i,rateTEN))
+}
+output
+length(output) # OKAY, NOW CORRECT LENGTH!
+rateTEN
+length(rateTEN) #okay
+length(i) # 1 ....okay?
+#length(i in geneologies) # error message...unexpected "in"
