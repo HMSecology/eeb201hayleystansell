@@ -107,6 +107,9 @@ mean(rpois(10000,2))
 1*(10^-4)
 #[1] 1e-04
 #
+#
+#
+#################################a) add mutations to the geneologies (aka coal. times) simulated in Q6. 
 # mu (aka lambda) = 1e-04
 # coal. times from Q6 .... 2N = 20,000 . so, 20000 generations (theoretically)
 # what is avg. # of SNPs/geneology (the mean! from the poisson)
@@ -117,5 +120,49 @@ rexp(10000, rate8) #gets 10,000 simulations of geneologies (coal. times) given 2
 geneologies<-rexp(10000, rate8)
 geneologies
 #okay
-mean(rpois(geneologies, 1e-04))
+#mean(rpois(geneologies, 1e-04))
 #[1] 0 ....hmmmmmmm
+#rpois(geneologies, 1e-04)
+#all values are zero here.... hmmm
+#for geneologies[i-10000]
+rate<-1e-04 #no? is rate*geneology value?
+rate
+for (i in geneologies){
+  rate<-1e-04*geneologies[i]
+  rpois(i, rate)
+  output<-mean(rpois(i,rate))
+}
+#slow-ish, but not locked up
+output
+#[1] 0.0001249649
+#very close to the rate!
+#################################b) What is the average number of SNPs per geneology?
+# From my simulation, it appears that the average number of SNPs per geneology closely approximates 
+# the given input mutation rate of 0.0002. The number generated through my simulation was ~0.000125
+#
+#
+#################################c) given that Theta = 4N(mu), what is theta predicted to be in this example?
+Theta<-2*20000*(1e-04)
+Theta
+# 4, if working with theoretical values of N and mu . 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~b) TAKE TWO
+#feel like my output for b) was incorrect, a my rate did not factor in the length of each geneology as it went
+geneologies<-rexp(10000, rate8)
+geneologies
+#okay
+#mean(rpois(geneologies, 1e-04))
+#[1] 0 ....hmmmmmmm
+#rpois(geneologies, 1e-04)
+#all values are zero here.... hmmm
+#for geneologies[i-10000]
+
+for (i in geneologies){
+  rate<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rate) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-mean(rpois(i,rate))
+}
+#slow-ish, but not locked up
+output
+
+#[1] 1.95577 
