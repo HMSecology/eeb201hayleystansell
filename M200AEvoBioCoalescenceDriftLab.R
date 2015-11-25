@@ -33,9 +33,9 @@ rate<-1/20000
 mean(rexp(10000, rate))
 #[1] 19712.04
 ##########################a) what is the average time to most recent common ancestor in your simulation?
-#19712.04
+#19712.04 generations
 ##########################b) what is the theoretical expectation?
-#20,000
+#20,000 generations
 ##########################c) how do the values compare?
 # They are very close to one another. 
 ##########################d) make a density plot of simulated coalescent times
@@ -53,4 +53,26 @@ sd(output)
 #
 #
 #############################################################################################EXERCISE SEVEN#############
+##answer parts a-e from Q6 for this simulation
+# set 2N = 2000
+#
+rate7<-1/2000
+mean(rexp(10000, rate7))
+#[1] 2009.536
+##########################a) what is the average time to most recent common ancestor in your simulation?
+#2009.536 generations
+##########################b) what is the theoretical expectation?
+#2000 generations
+##########################c) how do the values compare?
+# They are very close to one another, just as in Exercise Six
+##########################d) make a density plot of simulated coalescent times
+density(rexp(10000,rate7))
+plot(density(rexp(10000,rate7)))
+#Success!! ---it looks nearly identical in shape to the plot from exercise six. 
+#             The largest are occupies 0-5000, 1/10 of what was seen with the simulation where 2N=20000 (0-50000). It scales up.
+##########################e) what is the standard deviation of the coal. times?
+output7<-rexp(10000,rate7)
+density(output7)
+sd(output7)
+#[1] 1999.717
 
