@@ -197,7 +197,18 @@ geneologies
 for (i in geneologies){
   rate<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
   rpois(i, rate) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
-  output<-mean(rpois(i,rate))
+  output<-(rpois(i,rate))
 }
 #slow-ish, but not locked up
+#NOTE THAT I RAN THIS WITHOUT RUNNING THE ACTUAL FOR-LOOP, JUST DID WHAT WAS INSIDE IT....
 output
+#create density plot of output
+density(output)
+plot(density(output), main="Exercise 8, number of SNPs per replicate")
+#interesting.................?
+#
+#
+#
+#
+#########################################################################################EXERCISE TEN######################
+
