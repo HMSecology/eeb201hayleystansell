@@ -295,4 +295,5 @@ plot(geneologies, output)
 #
 ##############################################################################################EXERCISE TWELVE#################
 #
-
+#Given, sequenced a 10kb region of DNA from one individual (2 chromosomes = sample size). 
+#Observed 10 SNPs in that 10kb interval(region). 
