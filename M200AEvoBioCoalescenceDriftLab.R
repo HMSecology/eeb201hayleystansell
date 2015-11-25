@@ -334,7 +334,7 @@ sum(output12 == 10)
 168/10000
 #################################################a) What proportion of replicates have >/= 10 SNPs from model with N=10000?
 #  My simulation found 168 replicates with greater than- or equal to- 10 SNPs in a given geneology. Written another way, 
-#  1.68% of replicates had a minimum of 10 SNPs
+#  1.68% of replicates had a minimum of 10 SNPs. 
 #
 #################################################b)
 #rate is 1/2n = 1/2000
@@ -364,4 +364,5 @@ sum(output122 > 10)
 sum(output122 == 10)
 #zero
 #################################################b) what is the proportion of simulation replicates have >/= 10 SNPs
-#                                                   for a model with N=1000
+#                                                   for a model with N=1000?
+# Zero of my replicates from this simulation had a minimum of 10 SNPs, indicating this model is not compatible with the data. 

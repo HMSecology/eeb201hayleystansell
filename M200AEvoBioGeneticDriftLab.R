@@ -250,11 +250,33 @@ matplot(freqs4c [1:10000, 1:300], type= "l", lty = 1, main = "Drift for Populati
 #
 #
 #############################################b) Based on the plots, how does pop. size affect allele freq. change?
+# The larger a population size is, the longer it takes for alleles to become fixed at either frequency 1 or frequency zero. 
+#
 
 #############################################c) For each pop. size, in what proportion of simulation replicates
 # did the derived allele become fixed by the end of the simulation?
+# From the plots, it seems that more replicates became fixed at the derived allele in populations of larger size. Among all populations
+# it appears that for many replicates that drop to zero, they do so quickly. However, when comparing calcuated proportions, 
+# the relative proportions of fixed vs lost (or fixed at 1, 0) alleles seem to be the same.
 
 #############################################d) How is this probability affected by the pop. size?
+# The probability of fixation for the derived allele seems to decrease with increase in population size. Given that 
+# for a population of 1000, the number of alleles fixed at 1 or 0 was essentially equivalent for the number in a pop. of 100, 
+# it appears that while the relative proportion of fixed vs lost alleles is the same - in the larger population, the overall
+# number of alleles which are fixed *in the first place* at a given time is an order of magnitude less. 
 
 #############################################e) How does this prob. of fixation estimated from the simulations match
 #with the theoretical prediction?
+# This appears to fit with theory, in that large populations tend to maintain greater allelic diversity through time, while
+# small populations are much more prone to having alleles become fixed or loss due to the course of neutral genetic drift. 
+# 
+#FROM EXERCISE 3: (N= 100)
+sum(freqs3[10000, ] == 0) 
+#[1] 892
+sum(freqs3[10000, ] == 1)
+#[1] 108
+#FROM EXERCISE 4: (N= 1000)
+sum(freqs4c[10000, ] == 0)
+#[1] 891
+sum(freqs4c[10000, ] == 1)
+#[1] 107
