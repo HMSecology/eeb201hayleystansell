@@ -253,3 +253,9 @@ plot(density(output), main="Exercise 10, 2N =2000, number of SNPs per replicate"
 #
 ########################################################################################EXERCISE 11######################
 #
+??scatterplot
+?ggplot
+??ggplot
+library(ggplot2)
+#ehhhhhh, just try basic plot(x,y)
+
