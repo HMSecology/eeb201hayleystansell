@@ -296,4 +296,10 @@ plot(geneologies, output)
 ##############################################################################################EXERCISE TWELVE#################
 #
 #Given, sequenced a 10kb region of DNA from one individual (2 chromosomes = sample size). 
-#Observed 10 SNPs in that 10kb interval(region). 
+#effective mutation rate of 1e-04 for 10kbp INDEPENDENT EVIDENCE
+#Observed 10 SNPs in that 10kb interval(region). (MUCH HIGHER THAN 1E-04 --- 0.0001)
+#
+#need to drag down script for Exercise 8
+#
+
+
