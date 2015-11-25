@@ -211,4 +211,35 @@ plot(density(output), main="Exercise 8, number of SNPs per replicate")
 #
 #
 #########################################################################################EXERCISE TEN######################
+#
+#repeat all steps done for exercise 8, but 2N = 2000
+#
+# mu (aka lambda) = 1e-04
+# coal. times from Q6 .... 2N = 2000 . so, 2000 generations (theoretically)
+# what is avg. # of SNPs/geneology (the mean! from the poisson)
+#
+rate10<-1/2000
+rexp(10000, rate10) #gets 10,000 simulations of geneologies (coal. times) given 2N = 2000. 
+#10,000 similar/distributed coal. times. given those coal times...each output is an n...10,000 n's / draws for the Poisson
+geneologies<-rexp(10000, rate10)
+geneologies
+#okay
+#mean(rpois(geneologies, 1e-04))
+#[1] 0 ....hmmmmmmm
+#rpois(geneologies, 1e-04)
+#all values are zero here.... hmmm
+#for geneologies[i-10000]
 
+for (i in geneologies){
+  rateTEN<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rateTEN) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-(rpois(i,rateTEN))
+}
+
+output
+#[1] 0.1923077 #avg number of SNPs/geneology EXERCISE 10
+1e-04*2000
+#[1] 0.2 for EXERCISE 10
+# The output from this simulation appears to approximate the value of mu*number of geneologies....or, mu*coal.time. 
+# So, the average number of SNPs per coalescent time (geneology), is approximating the rate of mutation for the 
+# theoretical/ideal. parameters, as in exercise 8. 
