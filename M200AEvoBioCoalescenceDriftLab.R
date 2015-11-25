@@ -108,5 +108,14 @@ mean(rpois(10000,2))
 #[1] 1e-04
 #
 # mu (aka lambda) = 1e-04
-# coal. times from Q6 .... 2N = 20,000 . 
+# coal. times from Q6 .... 2N = 20,000 . so, 20000 generations (theoretically)
 # what is avg. # of SNPs/geneology (the mean! from the poisson)
+#
+rate8<-1/20000
+rexp(10000, rate8) #gets 10,000 simulations of geneologies (coal. times) given 2N = 20,000. 
+#10,000 similar/distributed coal. times. given those coal times...each output is an n...10,000 n's / draws for the Poisson
+geneologies<-rexp(10000, rate8)
+geneologies
+#okay
+mean(rpois(geneologies, 1e-04))
+#[1] 0 ....hmmmmmmm
