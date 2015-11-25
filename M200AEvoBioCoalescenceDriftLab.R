@@ -102,4 +102,11 @@ rpois(10,2)
 mean(rpois(10000,2))
 #[1] 1.9922 ----this mean is approximately 2 (the rate)
 #
+#getting workable syntax
+2*10
+1*(10^-4)
+#[1] 1e-04
 #
+# mu (aka lambda) = 1e-04
+# coal. times from Q6 .... 2N = 20,000 . 
+# what is avg. # of SNPs/geneology (the mean! from the poisson)
