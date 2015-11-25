@@ -75,4 +75,17 @@ output7<-rexp(10000,rate7)
 density(output7)
 sd(output7)
 #[1] 1999.717
+#
+##########################f) how does TMRCA from simulations in Q6 (2N =20,000) and Q7 (2N = 2,000) compare?
+#  They are both theoretically (and approximately, in simulation) equal to 2N generations.
+#  With the population size in Q7 being a tenth of the size of Q6, the resulting TMRCA is similarly one tenth. 
+##########################g) what can you conclude about how the population size affects the expected coalescent time?
+#  The expected coalescent time appears to scale in direct proportion with population size. 
+#  As population size increases or decreases one way or another, the TMRCA is expected to shift accordingly and to the same degree.
+#
+#
+#
+##############################################################################################EXERCISE EIGHT#################
+#
+
 
