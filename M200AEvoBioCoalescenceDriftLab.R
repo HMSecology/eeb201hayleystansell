@@ -299,25 +299,9 @@ plot(geneologies, output)
 #effective mutation rate of 1e-04 for 10kbp INDEPENDENT EVIDENCE
 #Observed 10 SNPs in that 10kb interval(region). (MUCH HIGHER THAN 1E-04 --- 0.0001)
 #
-#need to drag down script for Exercise 8
 #
-geneologies<-rexp(10000, rate8)
-geneologies
-#okay
-#mean(rpois(geneologies, 1e-04))
-#[1] 0 ....hmmmmmmm
-#rpois(geneologies, 1e-04)
-#all values are zero here.... hmmm
-#for geneologies[i-10000]
-
-for (i in geneologies){
-  rate<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
-  rpois(i, rate) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
-  output<-mean(rpois(i,rate))
-}
-#slow-ish, but not locked up
-output
-##############################################trying code from exercise 12, considering the vector length problem
+#
+#####################trying code from exercise 11, considering the vector length problem
 #
 #rate is 1/2n = 1/20000
 # change rate end to 12
@@ -332,8 +316,13 @@ for (i in length(geneologies12)){ #for each number in the length of geneologies 
   
   rateTWELVE<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
   rpois(i, rateTWELVE) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
-  output<-(rpois(i,rateTWELVE))
+  output12<-(rpois(i,rateTWELVE))
 }
 
-length(output) 
-
+length(output12) 
+#length is 10,000...good
+output12
+#offhand, I see a max number of SNPs of 5
+?max
+max(output12)
+#got a max value of 6 in one run, 5 in another.
