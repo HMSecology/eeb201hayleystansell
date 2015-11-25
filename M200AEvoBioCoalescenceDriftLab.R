@@ -164,5 +164,15 @@ for (i in geneologies){
 }
 #slow-ish, but not locked up
 output
-
 #[1] 1.95577 
+1e-04*20000
+#[1] 2
+# HERE, the output from this simulation appears to approximate the value of mu*number of geneologies....or, mu*coal.time. 
+# So, the average number of SNPs per coalescent time (geneology), is approximating the rate of mutation for the 
+# theoretical/ideal. parameters
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~c) BACK TO C
+#################################c) given that Theta = 4N(mu), what is theta predicted to be in this example?
+Theta<-2*20000*(1e-04) # = 4N(mu)
+Theta
+# [1] 2, if working with theoretical values of N and mu . 
