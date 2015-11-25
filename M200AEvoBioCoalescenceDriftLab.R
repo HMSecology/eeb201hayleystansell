@@ -243,3 +243,13 @@ output
 # The output from this simulation appears to approximate the value of mu*number of geneologies....or, mu*coal.time. 
 # So, the average number of SNPs per coalescent time (geneology), is approximating the rate of mutation for the 
 # theoretical/ideal. parameters, as in exercise 8. 
+density(output)
+plot(density(output), main="Exercise 10, 2N =2000, number of SNPs per replicate")
+# The density shown by this plot is of a similar patter to the 2N = 20000 simulation. 
+# However, there are fewer peaks and the range of values is much, much smaller (max values around 4 or 5)
+#
+#
+#
+#
+########################################################################################EXERCISE 11######################
+#
