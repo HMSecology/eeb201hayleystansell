@@ -266,6 +266,11 @@ plot(geneologies, output)
 length(geneologies) #[1] 10000
 length(output) #[1] 52 .............hmmmmmm
 length(rateTEN) #[1] 10000
+rate10<-1/2000
+rexp(10000, rate10) #gets 10,000 simulations of geneologies (coal. times) given 2N = 2000. 
+#10,000 similar/distributed coal. times. given those coal times...each output is an n...10,000 n's / draws for the Poisson
+geneologies<-rexp(10000, rate10)
+geneologies
 #bring up loop again:
 for (i in length(geneologies)){
   
@@ -273,9 +278,21 @@ rateTEN<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
   rpois(i, rateTEN) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
   output<-(rpois(i,rateTEN))
 }
+
 output
-length(output) # OKAY, NOW CORRECT LENGTH!
-rateTEN
-length(rateTEN) #okay
-length(i) # 1 ....okay?
-#length(i in geneologies) # error message...unexpected "in"
+length(output) # OKAY, NOW CORRECT LENGTH! (10000)
+#length(i in geneologies) # error message...unexpected "in" ---CORRECTED
+plot(geneologies, output)
+#this looks rather weird? Well, the output can only be integers....so the lines are not so weird? 
+#
+#While I'm not sure how to describe this plot, my expectation was that as TMRCA increased along the x-axis, 
+#the associated number of SNPs would increase accordingly. I'm not sure if the relationship would be linear, but I would 
+#expect it to generally be a direct/positive relationship.  With the plot made for this exercise, it's not readily apparent
+#how the TMRCA and number of SNPs relate. It does appear somewhat that the shorter TMRCAs are associated with fewer SNPs (output),
+#however, the trend is not obvious. 
+#
+#
+#
+##############################################################################################EXERCISE TWELVE#################
+#
+
