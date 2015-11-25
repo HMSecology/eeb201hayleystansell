@@ -314,7 +314,7 @@ geneologies12
 #bring up loop again:
 for (i in length(geneologies12)){ #for each number in the length of geneologies (10,000), do this:
   
-  rateTWELVE<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rateTWELVE<- 1e-04*geneologies12 #this worked! took out the [i] (had *geneologies[i])
   rpois(i, rateTWELVE) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
   output12<-(rpois(i,rateTWELVE))
 }
@@ -325,4 +325,43 @@ output12
 #offhand, I see a max number of SNPs of 5
 ?max
 max(output12)
-#got a max value of 6 in one run, 5 in another.
+#got a max value of 21 in one run, 25 in another.
+sum(output12 > 10)
+#[1] 108
+sum(output12 == 10)
+#[1] 60
+#total is 168
+168/10000
+#################################################a) What proportion of replicates have >/= 10 SNPs from model with N=10000?
+#  My simulation found 168 replicates with greater than- or equal to- 10 SNPs in a given geneology. Written another way, 
+#  1.68% of replicates had a minimum of 10 SNPs
+#
+#################################################b)
+#rate is 1/2n = 1/2000
+# change rate end to 122....add a "2" to all names
+# mutation rate for 10kbp is supposedly 1e-04
+rate122<-1/2000
+rexp(10000, rate122) #gets 10,000 simulations of geneologies (coal. times) given 2N = 20000. 
+#10,000 similar/distributed coal. times. given those coal times...each output is an n...10,000 n's / draws for the Poisson
+geneologies122<-rexp(10000, rate122)
+geneologies122
+#bring up loop again:
+for (i in length(geneologies122)){ #for each number in the length of geneologies (10,000), do this:
+  
+  rateTWELVE2<- 1e-04*geneologies122 #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rateTWELVE2) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output122<-(rpois(i,rateTWELVE2))
+}
+
+length(output122) 
+#length is 10,000...good
+output122
+#offhand, I see a max number of SNPs of 5
+?max
+max(output122)
+sum(output122 > 10)
+# zero
+sum(output122 == 10)
+#zero
+#################################################b) what is the proportion of simulation replicates have >/= 10 SNPs
+#                                                   for a model with N=1000
