@@ -164,7 +164,7 @@ for (i in geneologies){
 }
 #slow-ish, but not locked up
 output
-#[1] 1.95577 
+#[1] 1.95577 #avg number of SNPs/geneology
 1e-04*20000
 #[1] 2
 # HERE, the output from this simulation appears to approximate the value of mu*number of geneologies....or, mu*coal.time. 
@@ -176,3 +176,28 @@ output
 Theta<-2*20000*(1e-04) # = 4N(mu)
 Theta
 # [1] 2, if working with theoretical values of N and mu . 
+#
+#################################d) how does this value of theta compare to the average number of SNPs seen in the simmulations?
+# Theta appears to be aaproximately equal to the average (or expected) number of SNPs per geneology (here, 2). 
+#
+#
+#################################e) TOTALLY NEATZ!
+#
+#
+#################################f) make a density plot of the number of SNPs per simulation replicate....
+geneologies<-rexp(10000, rate8)
+geneologies
+#okay
+#mean(rpois(geneologies, 1e-04))
+#[1] 0 ....hmmmmmmm
+#rpois(geneologies, 1e-04)
+#all values are zero here.... hmmm
+#for geneologies[i-10000]
+
+for (i in geneologies){
+  rate<- 1e-04*geneologies #this worked! took out the [i] (had *geneologies[i])
+  rpois(i, rate) #appears to output a bunch of values that seem okay....integer numbers, mostly under 5, some up to ~20
+  output<-mean(rpois(i,rate))
+}
+#slow-ish, but not locked up
+output
