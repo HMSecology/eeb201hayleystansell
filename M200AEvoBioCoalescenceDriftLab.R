@@ -87,5 +87,19 @@ sd(output7)
 #
 ##############################################################################################EXERCISE EIGHT#################
 #
-
-
+#POISSON RANDOM VARIABLES
+?rpois
+#rpois is the random variable generation for the Poisson dist. (there's also dpois, ppois, qpois)
+#inputs are n, lambda . n is number of values to return, and lambda is a vector of (non-neg) means
+# n is number of "draws", lambda is a rate parameter for the distribution -- rate = expected value (and variance) of the dist.
+#
+#given rate of occurence (here, 2), over a number of intervals (here, 10) 
+#     - how many occurances of an event will there be in a given interval?
+rpois(10,2)
+#[1] 2 2 3 3 2 3 4 3 3 1
+#
+#simulate to show that the expected value of a given Poisson distribution is equal to the rate paramter (lambda)
+mean(rpois(10000,2))
+#[1] 1.9922 ----this mean is approximately 2 (the rate)
+#
+#
