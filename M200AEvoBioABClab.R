@@ -79,3 +79,8 @@ legend(8e04,1.35e-05, # places a legend at the appropriate place
        lty=c(1,1), # gives the legend appropriate symbols (lines)
        
        lwd=c(2.5,2.5),col=c("blue", "red")) # gives the legend lines the correct color and width
+
+###########################################################################################EXERCISE THREE
+
+#What is the median value of the posterior distribution of N?
+
