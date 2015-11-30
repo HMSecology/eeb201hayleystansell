@@ -51,3 +51,31 @@ simslower<- subset(sims, sims[,2]>45)
 simsupper<- subset(simslower, simslower[,2]<55)
 posterior<-simsupper[,1]
 posterior
+max(posterior)
+min(posterior)
+hist(posterior)
+density(posterior)
+plot(density(posterior))
+
+#e) I should be done!
+
+
+#############################################################################################EXERCISE TWO
+
+#Make a density plot of your prior and posterior distributions of N. 
+#plot them on the same axes, label which line corresponds to the prior, which corresponds to the posterior
+
+
+density(posterior)
+plot(density(posterior), main= "Posterior vs. Prior distributions", xlab= "Population size (value of N)", col= "blue")
+density(prior)
+?lines
+# "lines() adds a line to an existing plot --- lines(namevector, col = color)
+lines(density(prior), col= "red")
+?legend
+legend(8e04,1.35e-05, # places a legend at the appropriate place 
+       c("Posterior", "Prior"), # puts text in the legend
+       
+       lty=c(1,1), # gives the legend appropriate symbols (lines)
+       
+       lwd=c(2.5,2.5),col=c("blue", "red")) # gives the legend lines the correct color and width
