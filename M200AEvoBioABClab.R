@@ -45,3 +45,9 @@ length(snpnumber)
 
 
 #d) Set parameters to "choose" which draws from the prior give data that approx. the OBSERVED number of SNPs
+#accept all values of "N" that give b/w 45 and 55 SNPs
+sims<- cbind(prior, snpnumber)
+simslower<- subset(sims, sims[,2]>45)
+simsupper<- subset(simslower, simslower[,2]<55)
+posterior<-simsupper[,1]
+posterior
