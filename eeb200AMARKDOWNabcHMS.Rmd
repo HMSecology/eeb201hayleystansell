@@ -137,4 +137,34 @@ The posterior distribution is essentially more informative than the prior distri
 
 #####Repeat your ABC analysis, but change the prior dist. of N to be U~[1000,1e6]. What is the mean, median, and 95% credible interval for the posterior? How does this differ from what you computed in questions 3-4 for the original prior? What does this tell you about the effect fo the prior distribution in Bayesian stats?
 
+```{r}
+prior6<- runif(n=1e6, min = 1000, max = 1000000)
+rate6<- 1/(prior6)
+mostrecent6<- rexp(1e6, rate6)
+length(mostrecent6)
+ratemu6<- 1e-3
+snpnumber6<- rpois(1e6, mostrecent6*ratemu6*2)
+#snpnumber
+max(snpnumber6)
+length(snpnumber6)
+sims6<- cbind(prior6, snpnumber6)
+simslower6<- subset(sims6, sims6[,2]>45)
+simsupper6<- subset(simslower6, simslower6[,2]<55)
+posterior6<-simsupper6[,1]
+#posterior
+hist(posterior6)
+#
+plot(density(posterior6), main= "Posterior vs. Prior distributions", xlab= "Population size (value of N)", col= "green")
+density(prior6)
+#?lines
+# "lines() adds a line to an existing plot --- lines(namevector, col = color)
+lines(density(prior6), col= "purple")
+#?legend
+legend(3e04,4e-06, # places a legend at the appropriate place 
+       c("Posterior", "Prior"), # puts text in the legend
+       
+       lty=c(1,1), # gives the legend appropriate symbols (lines)
+       
+       lwd=c(2.5,2.5),col=c("green", "purple")) # gives the legend lines the correct color and width
 
+```
