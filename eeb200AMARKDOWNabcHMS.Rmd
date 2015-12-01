@@ -154,6 +154,7 @@ posterior6<-simsupper6[,1]
 #posterior
 hist(posterior6)
 #
+#?plot
 plot(density(posterior6), main= "Posterior vs. Prior distributions", xlab= "Population size (value of N)", col= "green")
 density(prior6)
 #?lines
@@ -161,10 +162,34 @@ density(prior6)
 lines(density(prior6), col= "purple")
 #?legend
 legend(6e05,3e-06, # places a legend at the appropriate place 
-       c("Posterior", "Prior"), # puts text in the legend
+       c("Posterior6", "Prior6"), # puts text in the legend
        
        lty=c(1,1), # gives the legend appropriate symbols (lines)
        
        lwd=c(2.5,2.5),col=c("green", "purple")) # gives the legend lines the correct color and width
 
+plot(density(posterior6), main= "Posterior vs. Prior distributions", xlab= "Population size (value of N)", col= "green")
+lines(density(prior6), col="purple")
+lines(density(prior), col ="red")
+lines(density(posterior), col ="black")
+#graph done to compare both simulations together.....not the most useful thing
 ```
+
+For this simulation, the mean value of N is `r mean(posterior6)`, the median is `r median(posterior6)`, 
+and the 95% credible interval is the range, 
+`r quantile(posterior6, c(0.025, 0.975))` , meaning that there is a 95% percent chance that the actual value for N falls within this range. 
+For the previous simulation, the mean was `r mean(posterior)` , the median was `r median(posterior)`, 
+and the 95% credible interval was the range, 
+`r quantile(posterior, c(0.025, 0.975))`
+
+Increasing the prior distribution by an order of magnitude resulted in a posterior distribution that appears more refined and which hones in around a range of values that are perhaps more likely to be the "true N value". The range for the 95% credible interval is smaller for the second simulation. This implies that the posterior stemming from a larger range of N's in the prior improves the degree of likelihood or credibility for the posterior. 
+
+
+###EXERCISE SEVEN
+
+#####If you wanted a more precise estimate of the pop. size (assume there is no sex-biased demographic history so you can easily extrapolate the total pop. size from the Y c-some pop. size and vice versa), would you be better off:
+
+#####a) sequencing a bigger region of the Y chromosome?
+#####or
+#####b) sequencing the same amount of the *autosomes*? 
+#####why?
