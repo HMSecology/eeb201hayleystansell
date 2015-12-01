@@ -120,7 +120,7 @@ median(posterior)
 #####Generate a 95% credible interval for the posterior dist. of N (like a confidence interval). Note, in this framework, there actually is a 95% chance of the true parameter value falling in this region. Hint - use "quantile" function. 
 
 ```{r}
-?quantile
+#?quantile
 quantile(posterior, c(0.025, 0.975))
 
 ```
@@ -160,7 +160,7 @@ density(prior6)
 # "lines() adds a line to an existing plot --- lines(namevector, col = color)
 lines(density(prior6), col= "purple")
 #?legend
-legend(3e04,4e-06, # places a legend at the appropriate place 
+legend(6e05,3e-06, # places a legend at the appropriate place 
        c("Posterior", "Prior"), # puts text in the legend
        
        lty=c(1,1), # gives the legend appropriate symbols (lines)
