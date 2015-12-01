@@ -23,6 +23,8 @@ plot(cars)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+This also can keep data outputs from showing, or you can just comment it out
+
 
 ###Exercise 1
 
@@ -32,7 +34,7 @@ getwd()
 setwd("C:\\Users\\Hayley\\eeb201hayleystansell")
 getwd()
 
-?runif
+#?runif
 #try simulating the coin flip thing from class
 #prior<- runif(1e6)
 #D_sim<- rbinom(n=1e6, size=100, p=prior)
@@ -41,7 +43,7 @@ getwd()
 #?plot
 #how is a number the prior distribution???? 
 prior<- runif(n=1e6, min = 100, max = 100000)
-prior
+#prior
 #plot(prior) #looks correct in terms of axes
 #
 ```
@@ -53,7 +55,7 @@ rate<- 1/(prior)
 mostrecent<- rexp(1e6, rate)
 #######DOES NOT NEED TO BE A LOOP!, R automatically takes each value of "prior" and plugs it in in order to the "mostrecent" vector
 #######Follows that NEITHER DOES NEXT STEP
-mostrecent
+#mostrecent
 length(mostrecent)
 ```
 
@@ -62,7 +64,7 @@ length(mostrecent)
 ```{r}
 ratemu<- 1e-3
 snpnumber<- rpois(1e6, mostrecent*ratemu*2)
-snpnumber
+#snpnumber
 max(snpnumber)
 length(snpnumber)
 ```
@@ -74,7 +76,7 @@ sims<- cbind(prior, snpnumber)
 simslower<- subset(sims, sims[,2]>45)
 simsupper<- subset(simslower, simslower[,2]<55)
 posterior<-simsupper[,1]
-posterior
+#posterior
 max(posterior)
 min(posterior)
 hist(posterior)
@@ -93,10 +95,10 @@ plot(density(posterior))
 density(posterior)
 plot(density(posterior), main= "Posterior vs. Prior distributions", xlab= "Population size (value of N)", col= "blue")
 density(prior)
-?lines
+#?lines
 # "lines() adds a line to an existing plot --- lines(namevector, col = color)
 lines(density(prior), col= "red")
-?legend
+#?legend
 legend(8e04,1.35e-05, # places a legend at the appropriate place 
        c("Posterior", "Prior"), # puts text in the legend
        
@@ -109,3 +111,28 @@ legend(8e04,1.35e-05, # places a legend at the appropriate place
 
 #####What is the median value of the posterior distribution of N?
 
+```{r}
+median(posterior)
+```
+
+###EXERCISE FOUR
+
+#####Generate a 95% credible interval for the posterior dist. of N (like a confidence interval). Note, in this framework, there actually is a 95% chance of the true parameter value falling in this region. Hint - use "quantile" function. 
+
+```{r}
+?quantile
+quantile(posterior, c(0.025, 0.975))
+
+```
+
+The actual parameter value should, with a 95% chance, fall somewhere between these two values. This range represents 95% of the data output distribution, centered around the mean...so they are the most likely values.  
+
+###EXERCISE FIVE
+
+#####How does the posterior dist. differ from the prior distribution? A descriptive answer will suffice. 
+
+The posterior distribution is essentially more informative than the prior distribution, as a product of the restrictions placed on its "acceptable" values - which are defined in the ABC simulation process. The range of likely (or even possible) values of N which satisfy the model in the posterior 1) are greatly reduced compared with the prior, and 2) have a more defined, uneven distribution across that range (approximating a normal distribution, more), which indicates that a certain range of N's is more likely to satifsy the model (compared with the prior, which has an even distribution across its range). 
+
+###EXERCISE SIX
+
+#####Repeat your ABC analysis, but change the prior dist. of N to be U~[1000,1e6]. What is the mean, median, and 95% credible interval for the posterior? How does this differ from what you computed in questions 3-4 for the original prior? What does this tell you about the effect fo the prior distribution in Bayesian stats?
