@@ -163,6 +163,7 @@ lines(density(prior6), col= "purple")
 #?legend
 legend(6e05,3e-06, # places a legend at the appropriate place 
        c("Posterior6", "Prior6"), # puts text in the legend
+       #try putting "top right" and it will set to right place
        
        lty=c(1,1), # gives the legend appropriate symbols (lines)
        
@@ -193,3 +194,10 @@ Increasing the prior distribution by an order of magnitude resulted in a posteri
 #####or
 #####b) sequencing the same amount of the *autosomes*? 
 #####why?
+
+Generally, it seems that the larger the prior distribution, the smaller (or more dense) the posterior distribution. In order to increase the prior for this simulation, you could choose to sequence more of the Y-chromosome, effectively increasing the range of "N" used in the prior. This should result in a more precise estimate as the range for the 95% credible interval in the posterior should decrease.  
+
+
+##Estimation of Population Split Times
+
+###EXERCISE ONE
