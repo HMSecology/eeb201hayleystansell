@@ -259,6 +259,23 @@ length(snpnumber3)
 
 ```
 
+#####d) Choose which draws from the prior generate data that approximate the observed number of SNPs (600) in the actual data. 
+#####   -accept values of tsplit that give between 550 and 650 SNPs
 
+```{r}
+
+sims3<- cbind(prior3, snpnumber3)
+simslower3<- subset(sims3, sims3[,2]>550)
+simsupper3<- subset(simslower3, simslower3[,2]<650)
+posterior3<-simsupper3[,1]
+#posterior
+max(posterior3)
+min(posterior3)
+#hist(posterior3)
+
+```
+
+#####e) It should be all done!
 
 ###EXERCISE FOUR
+
