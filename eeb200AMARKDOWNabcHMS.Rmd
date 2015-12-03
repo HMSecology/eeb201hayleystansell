@@ -317,5 +317,57 @@ The 95% credible interval for the posterior of tsplit is the range, `r quantile(
 
 ###EXERCISE SEVEN
 
-#####
+#####How does the posterior dist. differ from the prior dist? The degree to which the posterior differs from the prior relates to the amt. of info. in the data.
 
+As in the first exercise, the posterior distribution differs from the prior in that, while covering the same range of values, the density of values is not equally distributed across that range. Instead, there is more of a normal-distribution-esque curve to the density of values. The curve centers roughly around a median value. In this particular simulation, the degree of difference between the prior and the posterior is not particularly dramatic due to the amount of input information (which is similar to the amount used in the first round of exercise 1). 
+
+###EXERCISE EIGHT
+
+#####What if we did not know the true value of N? Repeat the ABC approach to estimate tsplit, but this time, rather than assume N=100,000, draw N from a distribution ~U[1000, 1000000]
+
+```{r}
+priorA<-runif(n=1e6, min=50000, max=1e6) #set A is for the split time
+priorB<-runif(n=1e6, min=1000, max=1e6)  #set B is for the ancestral time
+
+
+rateA<- 1/(priorA)
+tsplitA<- rexp(1e6, rateA)
+length(tsplitA)
+
+rateB<- 1/(priorB)
+tsplitB<- rexp(1e6, rateB)
+length(tsplitB)
+
+TMRCAfinal<- tsplitA + tsplitB #tsplitB is the expected ancestral coalescent time
+length(TMRCAfinal)
+
+#add in mutations
+ratemu3<- 1e-3
+snpnumberfinal<- rpois(1e6, TMRCAfinal*ratemu3*2)
+
+#snpnumber
+max(snpnumberfinal)
+min(snpnumberfinal)
+length(snpnumberfinal)
+#hist(snpnumber3)
+
+#focusing on prior and posterior of tsplitA (the split time)
+
+simsf<- cbind(priorA, snpnumberfinal)
+simslowerf<- subset(simsf, simsf[,2]>550)
+simsupperf<- subset(simslowerf, simslowerf[,2]<650)
+posteriorf<-simsupperf[,1]
+#posterior
+max(posteriorf)
+min(posteriorf)
+#hist(posteriorf)
+
+```
+
+###EXERCISE NINE
+
+#####Do your estimates of the median and credible intervale of tsplit differ from the previous simulation?
+
+The 95% credible interval for the posterior of tsplit in this simulation is the range, `r quantile(posteriorf, c(0.025, 0.975))` , and the median value for tsplit in this simulation is `r median(posteriorf)`
+
+In the previous simulation, the 95% credible interval for the posterior of tsplit was `r quantile(posterior3, c(0.025, 0.975))`, and the median value for tsplit was `r median(posterior3)` . 
