@@ -243,18 +243,20 @@ length(tsplit3)
 TMRCA<- tsplit3 + 1e5 #1e5 is the expected ancestral coalescent time
 length(TMRCA)
 
+```
 
+#####c) For each TMRCA, add a Poisson number of mutations
+
+```{r}
 ratemu3<- 1e-3
-snpnumber3<- rpois(1e6, tsplit3*ratemu3*2)
+snpnumber3<- rpois(1e6, TMRCA*ratemu3*2)
+
 #snpnumber
 max(snpnumber3)
+min(snpnumber3)
 length(snpnumber3)
+#hist(snpnumber3)
 
-
-
-
-
-#######careful! N is 100,000  .......don't know what the split population size is.... timesplit + simulated N (simulated with the rate)..... N generations is going to vary, THAT IS WHAT GOES INTO THE TIME TO COAL
 ```
 
 
