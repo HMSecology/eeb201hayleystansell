@@ -201,3 +201,62 @@ Generally, it seems that the larger the prior distribution, the smaller (or more
 ##Estimation of Population Split Times
 
 ###EXERCISE ONE
+
+#####What is the expected additional time we have to wait until the two chromosomes coalesce *once* they make it back into the ancestral population?
+
+Since this is a haploid group, the expected time to coalescence in the ancestral population is just N (vs. 2N) generations, where N is the population size (or number of y-chromosomes). If the ancestral population is of size N= 100,000, then the expected time to coalesce is 100,000 generations. 
+
+
+###EXERCISE TWO
+
+#####What is the expected time until the two chromosomes coalesce with each other? Write this formula using tsplit as split time. (write this as a formula, not a number estimate)
+
+TimeToCoalescence = Ngenerations + tsplit
+(basically, the time the populations were divergent, plus the time it took for the chromosomes to then coalesce in the ancestral population)
+
+
+###EXERCISE THREE
+
+-know that that ancestral pop size is N= 100000 (1e5) (haploid)
+-sequenced a 100kb region (mu for region is 1e-3)
+-do not know tsplit (time POPULATION split....not the same as TMRCA)
+  -range of tsplit can be 50000 to 1e6 (1 million gen)
+-do not know divided population size (need estimates)
+  -this influences the Ngenerations? should be Ngenerations = 1e5
+
+
+#####a) draw 1 million values from the prior distribution of tsplit. tsplit can be any value between 50,000 and 1,000,000, assume that tsplit~U[1000,1000000] .............this is incongruent with the first exercise, so assuming the range min is 50,000.
+
+```{r}
+prior3<-runif(n=1e6, min=50000, max=1e6)
+```
+
+#####b) For each value of tsplit, simulate a TMRCA (again, mimic the first exercise)
+
+```{r}
+
+
+rate3<- 1/(prior3)
+tsplit3<- rexp(1e6, rate3)
+length(tsplit3)
+
+TMRCA<- tsplit3 + 1e5 #1e5 is the expected ancestral coalescent time
+length(TMRCA)
+
+
+ratemu3<- 1e-3
+snpnumber3<- rpois(1e6, tsplit3*ratemu3*2)
+#snpnumber
+max(snpnumber3)
+length(snpnumber3)
+
+
+
+
+
+#######careful! N is 100,000  .......don't know what the split population size is.... timesplit + simulated N (simulated with the rate)..... N generations is going to vary, THAT IS WHAT GOES INTO THE TIME TO COAL
+```
+
+
+
+###EXERCISE FOUR
